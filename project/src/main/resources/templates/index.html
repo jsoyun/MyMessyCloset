@@ -3,9 +3,66 @@
 <head>
     <meta charset="UTF-8">
     <title>index</title>
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
 </head>
 <body>
+<!--<script>-->
+<!--    fetch('/restAPI')-->
+<!--        .then(response => response.json())-->
+<!--        .then(data =>{-->
+<!--            console.log("data==" , data)-->
+
+<!--            //html로 표시-->
+<!--            const displayElement = document.createElement('div');-->
+<!--            displayElement.innerHTML = `Name: ${data.name}`;-->
+<!--            document.body.appendChild(displayElement);-->
+
+
+<!--        })-->
+<!--        .catch(error => {-->
+<!--            console.error('데이터 불러오기 실패:', error);-->
+<!--        });-->
+
+<!--</script>-->
+
 <h3>스프링부트 실습</h3>
+<button id="getDataButton">UserData 가져오기</button>
+<div id="dataContainer"></div>
+<script>
+    $(document).ready(function () {
+        $('#getDataButton').click( function (){
+            $.ajax({
+                url: "/showUserData",
+                method:"get",
+                dataType: "json",
+                success: function (data) {
+                    displayData(data)
+                    
+                },
+                error: function(xhr, status, error) {
+                    console.error("서버 데이터 요청 중 오류:", status, error);
+                    showAlertAndRedirect();
+
+
+                }
+
+            });
+            });
+        function displayData(data) {
+            $('#dataContainer').html(`<p>Name: ${data.name}, Age: ${data.age}</p>`);
+
+        }
+        function showAlertAndRedirect() {
+            if(confirm("데이터를 가져오지 못했습니다. 회원가입 페이지로 이동하시겠습니까?")){
+                window.location.href ="/sign";
+
+            } else {
+
+            }
+
+        }
+    })
+</script>
 
 <a href="/index">hello</a>
 <a href="/sign">회원가입</a>
