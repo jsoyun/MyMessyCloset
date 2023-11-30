@@ -1,4 +1,4 @@
-package com.favorite.project;
+package com.favorite.project.Controller.restApi;
 
 import com.favorite.project.model.UserData;
 import org.springframework.http.HttpStatus;
@@ -10,7 +10,7 @@ import java.util.Map;
 import java.util.Objects;
 
 @RestController
-public class MyRestController {
+public class UserDataController {
     private UserData userData;
 
 //    @GetMapping("/restAPI")
@@ -24,7 +24,7 @@ public class MyRestController {
 //    }
 
 
-    @PostMapping("/signData")
+    @PostMapping("/signUserData")
     public ResponseEntity<Map<String, Object>> signData(@RequestBody UserData userData){
         Map<String, Object> saveData  = new HashMap<>();
         this.userData = userData;
