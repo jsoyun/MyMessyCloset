@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>로그인</title>
+
+</head>
+<body>
+<h3>로그인</h3>
+<form id="myForm">
+    name :<input id="name">
+    age: <input id="age">
+    <button type="submit" onclick="submitForm()">전송</button>
+</form>
+<div id="dataContainer"></div>
+<script>
+function submitForm() {
+    var name = document.getElementById("name").value;
+    var age = document.getElementById("age").value;
+
+    var url ="/checkUserData?" + new URLSearchParams({ name: name,age:age});
+
+    fetch(url)
+        .then(response =>
+
+            {
+                if(response.ok){
+                    return response.json();
+                } else{
+                    throw new Error(`서버 응답 오류${response.status}`)
+                }
+            }
+
+
+        )
+        .then(data =>{
+            console.log("data==" , data)
+
+            // //html로 표시
+            // const displayElement = document.createElement('div');
+            // displayElement.innerHTML = `Name: ${data.name}`;
+            // document.body.appendChild(displayElement);
+
+            // 받은 데이터에 따라 처리
+            if (data === true) {
+                console.log("데이터가 true입니다.");
+            } else if (data === false) {
+                console.log("데이터가 false입니다.");
+            } else {
+                console.log("다른 형식의 데이터입니다.");
+            }
+
+
+        })
+        .catch(error => {
+            console.error('데이터 불러오기 실패:', error);
+        });
+
+}
+
+</script>
+
+
+</body>
+</html>
