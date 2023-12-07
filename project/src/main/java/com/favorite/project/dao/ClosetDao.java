@@ -25,12 +25,9 @@ public class ClosetDao {
 
     }
 
-    //실제 데이터베이스 작업을 수행하는 메서드 작성
+    //데이터베이스 작업을 수행하는 메서드 작성
 
 
-   public void someMethod(){
-       Connection connection = databaseConnector.getConnection();
-   }
 
    //옷장 채우기
     public void addCloset(Closet closet){

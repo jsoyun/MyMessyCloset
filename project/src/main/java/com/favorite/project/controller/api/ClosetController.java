@@ -9,7 +9,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping("/api/closets")
+@RequestMapping("/api/AddCloset")
 public class ClosetController {
 
     private final ClosetService closetService;
@@ -26,7 +26,6 @@ public class ClosetController {
 //        Closet closet = new Closet();
         System.out.println("closet.getPurchase_date() = " + closet.getPurchase_date());
         System.out.println("타입확인"+ closet.getPurchase_date().getClass().getName() );
-
         closetService.addCloset(closet);
         return ResponseEntity.ok("Item added successfully");
     }
