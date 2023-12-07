@@ -103,7 +103,7 @@ public class DatabaseConnector {
 
 
 
-    public static Connection getConnection(){
+    public  Connection getConnection(){
 
         Connection con = null;
 
