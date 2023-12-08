@@ -1,6 +1,6 @@
-package com.favorite.project.Controller.restApi;
+package com.favorite.project.controller.api;
 
-import com.favorite.project.model.UserData;
+import com.favorite.project.dto.UserDataDto;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -11,7 +11,7 @@ import java.util.Objects;
 
 @RestController
 public class UserDataController {
-    private UserData userData;
+    private UserDataDto userData;
 
 //    @GetMapping("/restAPI")
 //    public Map<String, Object> restAPI(@RequestParam("name") String name, @RequestParam("age") int age){
@@ -25,7 +25,7 @@ public class UserDataController {
 
 
     @PostMapping("/signUserData")
-    public ResponseEntity<Map<String, Object>> signData(@RequestBody UserData userData){
+    public ResponseEntity<Map<String, Object>> signData(@RequestBody UserDataDto userData){
         Map<String, Object> saveData  = new HashMap<>();
         this.userData = userData;
 
@@ -35,7 +35,7 @@ public class UserDataController {
     }
 
     @GetMapping("/showUserData")
-    public ResponseEntity<UserData> showData(){
+    public ResponseEntity<UserDataDto> showData(){
         return  new ResponseEntity<>(userData, HttpStatus.OK);
     }
 

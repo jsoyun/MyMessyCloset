@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>옷장추가</title>
+</head>
+<body>
+<h3>옷장 페이지 압니다</h3>
+<h2>Closet Input Form</h2>
+<form id="closetForm">
+    <label for="category">Category:</label>
+    <select id="category" name="category" required >
+        <option value="상의">상의</option>
+        <option value="하의">하의</option>
+        <option value="겉옷">것옽</option>
+        <option value="양말">양말</option>
+
+    </select>
+
+    <label for="color">Color:</label>
+    <input type="text" id="color" name="color" required><br>
+
+    <label for="size">Size:</label>
+    <!-- Enum 선택을 위한 셀렉트 박스 예시 -->
+    <select id="size" name="size" required>
+        <option value="SMALL">Small</option>
+        <option value="MEDIUM">Medium</option>
+        <option value="LARGE">Large</option>
+    </select><br>
+
+    <label for="brand">Brand:</label>
+    <input type="text" id="brand" name="brand" required><br>
+
+    <label for="season">Season:</label>
+    <select id="season" name="season" required>
+        <option value="봄">봄</option>
+        <option value="여름">여름</option>
+        <option value="가을">가을</option>
+        <option value="겨울">겨울</option>
+    </select><br>
+
+    <label for="purchaseDate">Purchase Date:</label>
+    <input type="date" id="purchaseDate" name="purchaseDate" required><br>
+
+    <label for="price">Price:</label>
+    <input type="number" id="price" name="price" required><br>
+
+    <label for="notes">Notes:</label>
+    <textarea id="notes" name="notes" rows="4" cols="50" ></textarea><br>
+
+    <input type="submit" value="Submit" onclick="submitForm()">
+</form>
+
+<script>
+    function submitForm() {
+        var category = document.getElementById("category").value;
+        var color = document.getElementById("color").value;
+        var size = document.getElementById("size").value;
+        var brand = document.getElementById("brand").value;
+        var season = document.getElementById("season").value;
+        var purchaseDate = document.getElementById("purchaseDate").value;
+        var price = document.getElementById("price").value;
+        var notes = document.getElementById("notes").value;
+
+        var url ='/api/AddCloset'
+
+        var data ={
+
+            category: category,
+            color:color ,
+            size: size,
+            brand: brand,
+            season: season,
+            purchase_date: purchaseDate,
+            price: price,
+            notes: notes
+
+        };
+
+
+        fetch(url,
+            {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(data)
+            }
+        )
+            .then(response =>
+
+
+                {
+                    if(response.ok){
+                        return response.json();
+                    } else{
+
+                        throw new Error(`서버 응답 오류${response.status}`)
+                    }
+                }
+
+
+            )
+            .then(data =>{
+                console.log("data=====" , data)
+
+                // 받은 데이터에 따라 처리
+                if (data === true) {
+                    console.log("데이터가 true입니다.");
+                } else if (data === false) {
+                    console.log("데이터가 false입니다.");
+                } else {
+                    console.log("다른 형식의 데이터입니다.");
+                }
+
+
+            })
+            .catch(error => {
+                console.error('데이터 불러오기 실패:', error);
+            });
+
+
+
+
+    }
+
+</script>
+
+
+</body>
+</html>
+
+
