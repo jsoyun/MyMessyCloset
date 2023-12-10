@@ -1,4 +1,4 @@
-package com.favorite.project.controller.api;
+package com.favorite.project.controller;
 
 import com.favorite.project.dto.UserDataDto;
 import org.springframework.http.HttpStatus;
@@ -11,6 +11,9 @@ import java.util.Objects;
 
 @RestController
 public class UserDataController {
+
+
+
     private UserDataDto userData;
 
 //    @GetMapping("/restAPI")

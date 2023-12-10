@@ -1,4 +1,4 @@
-package com.favorite.project.controller.api;
+package com.favorite.project.controller;
 
 import com.favorite.project.dao.ClosetDao;
 import com.favorite.project.entity.Closet;

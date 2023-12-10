@@ -1,6 +1,7 @@
-package com.favorite.project.util;
+package com.favorite.project.config;
 
 
+import com.favorite.project.util.DatabaseConnector;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
@@ -14,7 +15,7 @@ public class DatabaseConfig {
     //DatabaseConnector 객체를 빈으로 등록할 수 있게 설정해둠
 
     @Bean
-    public DatabaseConnector databaseConnector(){
+    public com.favorite.project.util.DatabaseConnector databaseConnector(){
         System.out.println("DatabaseConfig내의 Bean");
         return new DatabaseConnector();
 
