@@ -5,6 +5,19 @@ spring:
       jdbc-url: jdbc:mariadb://localhost:3306/messyCloset
       username: root
       password: 1517
+      pool-name: Hikari Connection Pool  # Pool Name Alias
+      maximum-pool-size: 20
+  # HikariPool에 대한 로깅을 수행함
+logging:
+  level:
+    com.zaxxer.hikari.pool.HikariPool: debug
+
+mybatis:
+  configuration: mybatis/mybatis-config
+#    map-underscore-to-camel-case: true  # 컬럼명과 자바 빈의 프로퍼티를 매핑할 때 언더스코어를 캐멀케이스로 변환
+  mapper-locations: mapper/*.xml
+##  Mybatis에서 resultType으로 사용되는 패키지 명의 기본값을 지정합니다.
+#  type-aliases-package:
 
 
 
