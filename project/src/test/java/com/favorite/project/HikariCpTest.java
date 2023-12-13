@@ -8,6 +8,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.context.annotation.PropertySource;
 
 import java.sql.SQLException;
 import java.time.LocalDate;
@@ -15,21 +16,12 @@ import java.time.LocalDate;
 import static org.assertj.core.api.Assertions.assertThat;
 
 @SpringBootTest
+
 public class HikariCpTest {
 
     @Autowired
     private ClosetDao closetDao;
-    @BeforeEach
-    void connectHikari(){
-        //커넥션 풀링
-        HikariDataSource dataSource =
-                new HikariDataSource();
-        dataSource.setJdbcUrl("jdbc:mariadb://localhost:3306/messyCloset");
-        dataSource.setUsername("root");
-        dataSource.setPassword("1517");
-        closetDao = new ClosetDao(dataSource);
 
-    }
 
     @Test
     void save() throws SQLException,InterruptedException{

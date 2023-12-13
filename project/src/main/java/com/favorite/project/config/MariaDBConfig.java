@@ -7,13 +7,16 @@ import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.PropertySource;
+import org.springframework.context.ApplicationContext;
 
 import javax.sql.DataSource;
 
 @Configuration
-@PropertySource("classpath:/application.yml")
+//@PropertySource("classpath:/application.yml")
 public class MariaDBConfig {
 
+//    @Autowired
+//    private ApplicationContext applicationContext;
 
     @Bean
     @ConfigurationProperties(prefix="spring.datasource.hikari")
