@@ -50,11 +50,7 @@ public class ClosetDao {
                 preparedStatement.setNull(3, java.sql.Types.INTEGER);
             }
 
-            if (myCloset.getUser_id() != 0) {
-                preparedStatement.setInt(4, myCloset.getUser_id());
-            } else {
-                preparedStatement.setNull(4, java.sql.Types.INTEGER);
-            }
+            preparedStatement.setInt(4, myCloset.getUser_id());
 
 
 
