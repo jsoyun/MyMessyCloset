@@ -2,13 +2,12 @@ package com.favorite.project;
 
 
 import com.favorite.project.dao.ClosetDao;
-import com.favorite.project.entity.Closet;
+import com.favorite.project.entity.myCloset;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
 import java.sql.SQLException;
-import java.time.LocalDate;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -24,15 +23,11 @@ public class HikariCpTest {
     @Test
     void save() throws SQLException,InterruptedException{
         int id = 1;
-        int price = 1000;
-        String category ="카테고리임다";
 
 
         //builder 패턴으로 값 지정
-        Closet closet1 = Closet.builder()
+        myCloset myCloset1 = myCloset.builder()
                 .id(id)
-                .price(price)
-                .category(category)
                 .build();
 
 
@@ -48,8 +43,7 @@ public class HikariCpTest {
 //                closetDao.find(closet);
 //
 //        assertThat(closet1.getId()).isEqualTo(findCloset);
-        assertThat(closet1.getId()).isEqualTo(id);
-        assertThat(closet1.getCategory()).isEqualTo(category);
+        assertThat(myCloset1.getId()).isEqualTo(id);
 
 
     }

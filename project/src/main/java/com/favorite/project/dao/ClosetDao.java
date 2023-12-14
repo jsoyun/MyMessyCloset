@@ -1,6 +1,6 @@
 package com.favorite.project.dao;
 
-import com.favorite.project.entity.Closet;
+import com.favorite.project.entity.myCloset;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
@@ -27,7 +27,7 @@ public class ClosetDao {
 
 
    //옷장 채우기
-    public void addCloset(Closet closet){
+    public void addCloset(myCloset myCloset){
         Connection connection = null;
         PreparedStatement preparedStatement = null;
 
@@ -36,20 +36,27 @@ public class ClosetDao {
         try{
             connection = databaseConnector.getConnection();
             //sql 쿼리 작성
-            String sql= "INSERT INTO myCloset (category, color, size, brand, season, purchase_date, price, notes)\n" +
+            String sql= "INSERT INTO myCloset ( color, notes,clothes_id, user_id)\n" +
                     "VALUES \n" +
-                    "    (?, ?, ?, ?, ?, ?, ?, ?);\n";
+                    "    (?, ?, ?, ?);\n";
             preparedStatement = connection.prepareStatement(sql);
-            preparedStatement.setString(1, closet.getCategory());
-            preparedStatement.setString(2, closet.getColor());
-            preparedStatement.setString(3, closet.getSize());
-            preparedStatement.setString(4, closet.getBrand());
-            preparedStatement.setString(5, closet.getSeason());
-            //closet.getPurchase_date() 값이 없어서 java.lang.NullPointerException 나옴
-            //entity키와 클라이언트 키 이름이 달라서 매핑이 안되었음
-            preparedStatement.setDate(6, Date.valueOf(closet.getPurchase_date()));
-            preparedStatement.setInt(7, closet.getPrice());
-            preparedStatement.setString(8, closet.getNotes());
+
+            preparedStatement.setString(1, myCloset.getColor());
+            preparedStatement.setString(2, myCloset.getNotes());
+            // 만약 값이 없으면 setNull로 처리
+            if (myCloset.getClothes_id() != 0) {
+                preparedStatement.setInt(3, myCloset.getClothes_id());
+            } else {
+                preparedStatement.setNull(3, java.sql.Types.INTEGER);
+            }
+
+            if (myCloset.getUser_id() != 0) {
+                preparedStatement.setInt(4, myCloset.getUser_id());
+            } else {
+                preparedStatement.setNull(4, java.sql.Types.INTEGER);
+            }
+
+
 
             preparedStatement.executeUpdate();
 
@@ -72,8 +79,8 @@ public class ClosetDao {
     }
 
 
-    public Integer find(Closet closet){
-        return  closet.getId();
+    public Integer find(myCloset myCloset){
+        return  myCloset.getId();
 
 
     }
