@@ -1,19 +1,29 @@
 spring:
-  profiles: test
   datasource:
-    driver-class-name: org.h2.Driver
-    url: jdbc:h2:mem:testdb;MODE=MySQL;
-    username: sa
-    password:
+    hikari:
+      driver-class-name: org.mariadb.jdbc.Driver
+      jdbc-url: jdbc:mariadb://localhost:3306/messyCloset
+      username: root
+      password: 1517
+      #hikari커넥션 풀사이즈 옵션
+      connection-timeout: 3000
+      validation-timeout: 3000
+      minimum-idle: 5
+      max-lifetime: 240000
+      maximum-pool-size: 15
 
-  h2:
-    console:
-      enabled: true
 
-  jpa:
-    database: h2
-    database-platform: com.ss.camper.config.CustomMySQL5Dialect
-    generate-ddl: false
-    open-in-view: false
-    hibernate:
-      ddl-auto: create-drop
+      #스레드 풀의 동작을 조정
+#  task:
+#    execution:
+#      pool:
+#        core-size: 5
+#        max-size: 10
+#쓰레드 풀 설정
+server:
+  tomcat:
+    threads:
+      max: 200 # 쓰레드의 최대 개수
+      min-spare: 10 #활성화 상태로 유지할 최소 쓰레드의 개수
+    accept-count: 100 #모든 스레드가 사용 중일때 들어오는 연결 요청 큐의 최대 길이
+  port: 8080

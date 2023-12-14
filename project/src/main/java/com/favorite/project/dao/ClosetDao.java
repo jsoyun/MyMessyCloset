@@ -1,13 +1,10 @@
 package com.favorite.project.dao;
 
 import com.favorite.project.entity.Closet;
-import com.favorite.project.util.DatabaseConnector;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Bean;
 import org.springframework.stereotype.Repository;
 
-import com.favorite.project.util.DatabaseConnector;
-
+import javax.sql.DataSource;
 import java.sql.*;
 
 @Repository
@@ -15,11 +12,11 @@ public class ClosetDao {
 
 //    Connection connection = null;
 
-    private final DatabaseConnector databaseConnector;
+    private final DataSource databaseConnector;
 
     //Autowired로 databaseConnector 객체를 빈으로 등록한다
     @Autowired
-    public ClosetDao(DatabaseConnector databaseConnector){
+    public ClosetDao(DataSource databaseConnector){
         System.out.println("cloasetDAO Autowired");
         this.databaseConnector = databaseConnector;
 
@@ -63,9 +60,11 @@ public class ClosetDao {
             e.printStackTrace();
 
 
-        } finally {
-            DatabaseConnector.close(connection, preparedStatement);
         }
+
+//        finally {
+//            DatabaseConnector.close(connection, preparedStatement);
+//        }
 
 
 
@@ -73,13 +72,9 @@ public class ClosetDao {
     }
 
 
+    public Integer find(Closet closet){
+        return  closet.getId();
 
 
-
-
-
-
-
-
-
+    }
 }
