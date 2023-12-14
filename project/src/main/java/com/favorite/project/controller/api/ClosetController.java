@@ -24,9 +24,11 @@ public class ClosetController {
     @PostMapping
     public ResponseEntity<String> addCloset(@RequestBody Closet closet){
 //        Closet closet = new Closet();
-        System.out.println("closet.getPurchase_date() = " + closet.getPurchase_date());
-        System.out.println("타입확인"+ closet.getPurchase_date().getClass().getName() );
+//        System.out.println("closet.getPurchase_date() = " + closet.getPurchase_date());
+//        System.out.println("타입확인"+ closet.getPurchase_date().getClass().getName() );
         closetService.addCloset(closet);
+        System.out.println("--Item added successfully");
         return ResponseEntity.ok("Item added successfully");
+
     }
 }
