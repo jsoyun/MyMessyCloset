@@ -12,7 +12,6 @@ import java.sql.SQLException;
 import static org.assertj.core.api.Assertions.assertThat;
 
 @SpringBootTest
-
 public class HikariCpTest {
 
     @Autowired
@@ -23,12 +22,16 @@ public class HikariCpTest {
     @Test
     void save() throws SQLException,InterruptedException{
         int id = 1;
+        int user_id = 12312;
 
 
         //builder 패턴으로 값 지정
         userCloset myCloset1 = userCloset.builder()
                 .id(id)
+                .user_id(user_id)
                 .build();
+
+//        userCloset myCloset2 = new userCloset(5, "ㅇ" ,"노트요" ,1,111);
 
 
 //        closet.setColor("노랑파랑입니다");
@@ -43,6 +46,13 @@ public class HikariCpTest {
 //                closetDao.find(closet);
 //
 //        assertThat(closet1.getId()).isEqualTo(findCloset);
+        System.out.println("myCloset1.getId = " + myCloset1.getId());
+        System.out.println("myCloset1.getUser_id() = " + myCloset1.getUser_id());
+//        System.out.println("myCloset2.getId = " + myCloset2.getId());
+//        System.out.println("myCloset2.getNotes = " + myCloset2.getNotes());
+//        System.out.println("myCloset2.getUser_id() = " + myCloset2.getUser_id());
+        
+
         assertThat(myCloset1.getId()).isEqualTo(id);
 
 

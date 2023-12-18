@@ -36,7 +36,7 @@ public class ClosetDao {
         try{
             connection = databaseConnector.getConnection();
             //sql 쿼리 작성
-            String sql= "INSERT INTO myCloset ( color, notes,clothes_id, user_id)\n" +
+            String sql= "INSERT INTO userCloset ( color, notes,clothes_id, user_id)\n" +
                     "VALUES \n" +
                     "    (?, ?, ?, ?);\n";
             preparedStatement = connection.prepareStatement(sql);
