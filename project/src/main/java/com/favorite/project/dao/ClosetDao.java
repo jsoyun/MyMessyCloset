@@ -1,6 +1,6 @@
 package com.favorite.project.dao;
 
-import com.favorite.project.entity.userCloset;
+import com.favorite.project.entity.UserCloset;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
@@ -10,7 +10,8 @@ import java.sql.*;
 @Repository
 public class ClosetDao {
 
-//    Connection connection = null;
+    Connection connection = null;
+    PreparedStatement preparedStatement = null;
 
     private final DataSource databaseConnector;
 
@@ -27,9 +28,8 @@ public class ClosetDao {
 
 
    //옷장 채우기
-    public void addCloset(userCloset userCloset){
-        Connection connection = null;
-        PreparedStatement preparedStatement = null;
+    public void addCloset(UserCloset userCloset){
+
 
 
         //데이터베이스 연결
@@ -75,7 +75,36 @@ public class ClosetDao {
     }
 
 
-    public Integer find(userCloset userCloset){
+    public int getUserClosetCount() throws SQLException {
+
+        connection = databaseConnector.getConnection();
+        preparedStatement = connection.prepareStatement("select count(*) from userCloset");
+        ResultSet rs = preparedStatement.executeQuery();
+        rs.next();
+        int count = rs.getInt(1);
+        return count;
+
+
+//        PreparedStatement ps = c.prepareStatement("select count(*) from users");
+//
+//        ResultSet rs = ps.executeQuery();
+//        rs.next();
+//        int count = rs.getInt(1);
+//
+//        rs.close();
+//        ps.close();
+//        c.close();
+//
+//        return count;
+
+
+
+
+
+
+    }
+
+    public Integer find(UserCloset userCloset){
         return  userCloset.getId();
 
 
