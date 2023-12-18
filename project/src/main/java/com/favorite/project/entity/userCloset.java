@@ -1,15 +1,12 @@
 package com.favorite.project.entity;
 
 import lombok.Getter;
-import lombok.Setter;
-
-import java.time.LocalDate;
 
 @Getter
 
 //@Entity
 
-public class myCloset {
+public class userCloset {
 
 //    @Id
     private final int id;
@@ -19,7 +16,7 @@ public class myCloset {
     private int user_id;
 
     //생성자
-    public myCloset(int id, String color, String notes, int clothes_id,int user_id) {
+    public userCloset(int id, String color, String notes, int clothes_id,int user_id) {
         this.id = id;
         this.color = color;
         this.notes = notes;
@@ -37,13 +34,13 @@ public static class Builder{
     }
 
 
-    public myCloset build(){
-        return new myCloset(this);
+    public userCloset build(){
+        return new userCloset(this);
     }
 }
 
 
-    private myCloset(Builder builder){
+    private userCloset(Builder builder){
     this.id = builder.id;
     }
 

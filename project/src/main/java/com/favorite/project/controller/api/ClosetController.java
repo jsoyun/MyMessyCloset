@@ -1,6 +1,6 @@
 package com.favorite.project.controller.api;
 
-import com.favorite.project.entity.myCloset;
+import com.favorite.project.entity.userCloset;
 import com.favorite.project.service.ClosetService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -20,12 +20,12 @@ public class ClosetController {
 
 
     @PostMapping
-    public ResponseEntity<String> addCloset(@RequestBody myCloset myCloset){  //RequestBody 이 맵핑이 생성자를 쓰나?
+    public ResponseEntity<String> addCloset(@RequestBody userCloset userCloset){  //RequestBody 이 맵핑이 생성자를 쓰나?
 
 //        Closet closet = new Closet();
 //        System.out.println("closet.getPurchase_date() = " + closet.getPurchase_date());
 //        System.out.println("타입확인"+ closet.getPurchase_date().getClass().getName() );
-        closetService.addCloset(myCloset);
+        closetService.addCloset(userCloset);
         return ResponseEntity.ok("Item added successfully");
 
     }

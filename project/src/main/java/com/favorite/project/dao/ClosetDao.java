@@ -1,6 +1,6 @@
 package com.favorite.project.dao;
 
-import com.favorite.project.entity.myCloset;
+import com.favorite.project.entity.userCloset;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
@@ -27,7 +27,7 @@ public class ClosetDao {
 
 
    //옷장 채우기
-    public void addCloset(myCloset myCloset){
+    public void addCloset(userCloset userCloset){
         Connection connection = null;
         PreparedStatement preparedStatement = null;
 
@@ -41,16 +41,16 @@ public class ClosetDao {
                     "    (?, ?, ?, ?);\n";
             preparedStatement = connection.prepareStatement(sql);
 
-            preparedStatement.setString(1, myCloset.getColor());
-            preparedStatement.setString(2, myCloset.getNotes());
+            preparedStatement.setString(1, userCloset.getColor());
+            preparedStatement.setString(2, userCloset.getNotes());
             // 만약 값이 없으면 setNull로 처리
-            if (myCloset.getClothes_id() != 0) {
-                preparedStatement.setInt(3, myCloset.getClothes_id());
+            if (userCloset.getClothes_id() != 0) {
+                preparedStatement.setInt(3, userCloset.getClothes_id());
             } else {
                 preparedStatement.setNull(3, java.sql.Types.INTEGER);
             }
 
-            preparedStatement.setInt(4, myCloset.getUser_id());
+            preparedStatement.setInt(4, userCloset.getUser_id());
 
 
 
@@ -75,8 +75,8 @@ public class ClosetDao {
     }
 
 
-    public Integer find(myCloset myCloset){
-        return  myCloset.getId();
+    public Integer find(userCloset userCloset){
+        return  userCloset.getId();
 
 
     }

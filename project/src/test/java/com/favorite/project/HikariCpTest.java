@@ -2,7 +2,7 @@ package com.favorite.project;
 
 
 import com.favorite.project.dao.ClosetDao;
-import com.favorite.project.entity.myCloset;
+import com.favorite.project.entity.userCloset;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -26,7 +26,7 @@ public class HikariCpTest {
 
 
         //builder 패턴으로 값 지정
-        myCloset myCloset1 = myCloset.builder()
+        userCloset myCloset1 = userCloset.builder()
                 .id(id)
                 .build();
 
