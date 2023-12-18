@@ -5,7 +5,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 
 @Controller
 public class ClosetPageController {
-    @GetMapping("/closet")
+    @GetMapping("/myCloset")
     public String closet(){
         return "/closet";
     }
