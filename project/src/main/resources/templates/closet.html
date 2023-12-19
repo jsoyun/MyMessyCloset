@@ -8,42 +8,16 @@
 <h3>옷장 페이지 압니다</h3>
 <h2>Closet Input Form</h2>
 <form id="closetForm">
-    <label for="category">Category:</label>
-    <select id="category" name="category" required >
-        <option value="상의">상의</option>
-        <option value="하의">하의</option>
-        <option value="겉옷">것옽</option>
-        <option value="양말">양말</option>
 
-    </select>
 
     <label for="color">Color:</label>
     <input type="text" id="color" name="color" required><br>
+    <label for="clothes_id">clothes:</label>
+    <input type="number" id="clothes_id" name="clothes_id"><br>
+    <label for="user_id">user_id:</label>
+    <input type="number" id="user_id" name="user_id"><br>
 
-    <label for="size">Size:</label>
-    <!-- Enum 선택을 위한 셀렉트 박스 예시 -->
-    <select id="size" name="size" required>
-        <option value="SMALL">Small</option>
-        <option value="MEDIUM">Medium</option>
-        <option value="LARGE">Large</option>
-    </select><br>
 
-    <label for="brand">Brand:</label>
-    <input type="text" id="brand" name="brand" required><br>
-
-    <label for="season">Season:</label>
-    <select id="season" name="season" required>
-        <option value="봄">봄</option>
-        <option value="여름">여름</option>
-        <option value="가을">가을</option>
-        <option value="겨울">겨울</option>
-    </select><br>
-
-    <label for="purchaseDate">Purchase Date:</label>
-    <input type="date" id="purchaseDate" name="purchaseDate" required><br>
-
-    <label for="price">Price:</label>
-    <input type="number" id="price" name="price" required><br>
 
     <label for="notes">Notes:</label>
     <textarea id="notes" name="notes" rows="4" cols="50" ></textarea><br>
@@ -53,27 +27,20 @@
 
 <script>
     function submitForm() {
-        var category = document.getElementById("category").value;
+
         var color = document.getElementById("color").value;
-        var size = document.getElementById("size").value;
-        var brand = document.getElementById("brand").value;
-        var season = document.getElementById("season").value;
-        var purchaseDate = document.getElementById("purchaseDate").value;
-        var price = document.getElementById("price").value;
         var notes = document.getElementById("notes").value;
+        var clothes_id = document.getElementById("clothes_id").value;
+        var user_id = document.getElementById("user_id").value;
+
 
         var url ='/api/AddCloset'
 
         var data ={
-
-            category: category,
             color:color ,
-            size: size,
-            brand: brand,
-            season: season,
-            purchase_date: purchaseDate,
-            price: price,
-            notes: notes
+            notes: notes ,
+            clothes_id :clothes_id,
+            user_id :user_id
 
         };
 
@@ -90,7 +57,10 @@
             .then(response =>
 
 
+
                 {
+
+                    console.log("response", response)
                     if(response.ok){
                         return response.json();
                     } else{

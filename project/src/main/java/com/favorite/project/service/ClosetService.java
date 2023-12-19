@@ -1,10 +1,8 @@
 package com.favorite.project.service;
 
 import com.favorite.project.dao.ClosetDao;
-import com.favorite.project.entity.Closet;
-import com.favorite.project.repository.UserRepository;
+import com.favorite.project.entity.UserCloset;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Bean;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -19,9 +17,9 @@ public class ClosetService {
     }
 
 
-    public void addCloset(Closet closet){
+    public void addCloset(UserCloset userCloset){
 
-        closetDao.addCloset(closet );
+        closetDao.addCloset(userCloset);
     }
 
 }
