@@ -4,10 +4,12 @@ import com.favorite.project.dao.ClosetDao;
 import com.favorite.project.entity.UserCloset;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+
+import java.sql.SQLException;
 
 @Service
 public class ClosetService {
-//    private UserRepository userRepository;
 
     private final ClosetDao closetDao;
 
@@ -16,9 +18,8 @@ public class ClosetService {
         this.closetDao = closetDao;
     }
 
-
-    public void addCloset(UserCloset userCloset){
-
+//    @Transactional
+    public void addCloset(UserCloset userCloset) throws SQLException {
         closetDao.addCloset(userCloset);
     }
 

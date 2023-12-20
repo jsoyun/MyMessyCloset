@@ -28,12 +28,11 @@ public class ClosetDao {
 
 
    //옷장 채우기
-    public void addCloset(UserCloset userCloset){
+    public void addCloset(UserCloset userCloset) throws SQLException{
 
 
 
         //데이터베이스 연결
-        try{
             connection = databaseConnector.getConnection();
             //sql 쿼리 작성
             String sql= "INSERT INTO userCloset ( color, notes,clothes_id, user_id)\n" +
@@ -56,14 +55,6 @@ public class ClosetDao {
 
             preparedStatement.executeUpdate();
 
-
-
-
-        } catch (Exception e){
-            e.printStackTrace();
-
-
-        }
 
 //        finally {
 //            DatabaseConnector.close(connection, preparedStatement);
