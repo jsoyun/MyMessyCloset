@@ -1,12 +1,23 @@
 package com.favorite.project.controller.api;
 
-import com.favorite.project.dao.ClosetDao;
-import com.favorite.project.entity.Closet;
+
+import com.favorite.project.entity.UserCloset;
+import com.favorite.project.exceptions.SQLExceptionHandler;
 import com.favorite.project.service.ClosetService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.RequestEntity;
+import org.springframework.http.HttpStatus;
+
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.client.HttpStatusCodeException;
+import org.springframework.web.client.ResponseErrorHandler;
+import org.springframework.web.client.RestClientException;
+import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExceptionHandler;
+
+import java.sql.SQLException;
+import java.util.HashMap;
+import java.util.Map;
+
 
 @RestController
 @RequestMapping("/api/AddCloset")
@@ -22,13 +33,24 @@ public class ClosetController {
 
 
     @PostMapping
-    public ResponseEntity<String> addCloset(@RequestBody Closet closet){
-//        Closet closet = new Closet();
-//        System.out.println("closet.getPurchase_date() = " + closet.getPurchase_date());
-//        System.out.println("타입확인"+ closet.getPurchase_date().getClass().getName() );
-        closetService.addCloset(closet);
-        System.out.println("--Item added successfully");
-        return ResponseEntity.ok("Item added successfully");
+
+    public ResponseEntity<Object> addCloset(@RequestBody UserCloset userCloset){
+
+        try{
+            closetService.addCloset(userCloset);
+            Map<String,String> successResponse = new HashMap<>();
+            successResponse.put("message", "옷장이 생성되었습니다.");
+            return ResponseEntity.ok(successResponse);
+
+        } catch (SQLException e){
+            String errorMessage = SQLExceptionHandler.handleSQLException(e);
+            Map<String, String> errorResponse = new HashMap<>();
+            errorResponse.put("error",errorMessage);
+           return new ResponseEntity<>(errorResponse,HttpStatus.BAD_REQUEST);
+        }
+
+
+
 
     }
 }

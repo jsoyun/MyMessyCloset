@@ -18,7 +18,13 @@
     </select>
 
     <label for="color">Color:</label>
-    <input type="text" id="color" name="color" required><br>
+
+    <input type="text" id="color" name="color" ><br>
+    <label for="clothes_id">clothes:</label>
+    <input type="number" id="clothes_id" name="clothes_id"><br>
+    <label for="user_id">user_id:</label>
+    <input type="number" id="user_id" name="user_id"><br>
+
 
     <label for="size">Size:</label>
     <!-- Enum 선택을 위한 셀렉트 박스 예시 -->
@@ -48,19 +54,20 @@
     <label for="notes">Notes:</label>
     <textarea id="notes" name="notes" rows="4" cols="50" ></textarea><br>
 
-    <input type="submit" value="Submit" onclick="submitForm()">
+<!--    <input type="submit" value="Submit" onclick="submitForm()">-->
+    <button type="button"  onclick="submitForm()">제출</button>
 </form>
 
 <script>
     function submitForm() {
         var category = document.getElementById("category").value;
         var color = document.getElementById("color").value;
-        var size = document.getElementById("size").value;
-        var brand = document.getElementById("brand").value;
-        var season = document.getElementById("season").value;
-        var purchaseDate = document.getElementById("purchaseDate").value;
-        var price = document.getElementById("price").value;
+
+        var clothes_id = document.getElementById("clothes_id").value;
+        var user_id = document.getElementById("user_id").value;
         var notes = document.getElementById("notes").value;
+
+
 
         var url ='/api/AddCloset'
 
@@ -68,11 +75,10 @@
 
             category: category,
             color:color ,
-            size: size,
-            brand: brand,
-            season: season,
-            purchase_date: purchaseDate,
-            price: price,
+
+            clothes_id :clothes_id,
+            user_id :user_id,
+
             notes: notes
 
         };
@@ -87,36 +93,32 @@
                 body: JSON.stringify(data)
             }
         )
-            .then(response =>
 
+            .then(response => {
 
-                {
                     if(response.ok){
-                        return response.json();
-                    } else{
+                      console.log("  response.headers.get('content-type')",  response.headers.get('content-type'))
+                        return response.json().then( e=>{
+                            alert(e.message)
+                            }
 
-                        throw new Error(`서버 응답 오류${response.status}`)
+                        );
+                    } else {
+                        return response.json().then(errorResponse => {
+
+                            throw new Error(errorResponse.error);
+                        });
                     }
                 }
 
 
             )
-            .then(data =>{
-                console.log("data=====" , data)
-
-                // 받은 데이터에 따라 처리
-                if (data === true) {
-                    console.log("데이터가 true입니다.");
-                } else if (data === false) {
-                    console.log("데이터가 false입니다.");
-                } else {
-                    console.log("다른 형식의 데이터입니다.");
-                }
-
-
+            .then(data => {
+                console.log('API 응답 JSON:', data);
             })
             .catch(error => {
-                console.error('데이터 불러오기 실패:', error);
+
+                alert(`서버 응답 오류: ${error.message}`);
             });
 
 
