@@ -1,6 +1,6 @@
 package com.favorite.project.dao;
 
-import com.favorite.project.entity.UserCloset;
+import com.favorite.project.entity.Closet;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
@@ -10,8 +10,7 @@ import java.sql.*;
 @Repository
 public class ClosetDao {
 
-    Connection connection = null;
-    PreparedStatement preparedStatement = null;
+//    Connection connection = null;
 
     private final DataSource databaseConnector;
 
@@ -27,31 +26,29 @@ public class ClosetDao {
 
 
 
-   //옷장 채우기
+
     public void addCloset(UserCloset userCloset) throws SQLException{
+
 
 
 
         //데이터베이스 연결
             connection = databaseConnector.getConnection();
             //sql 쿼리 작성
-            String sql= "INSERT INTO userCloset ( color, notes,clothes_id, user_id)\n" +
+            String sql= "INSERT INTO myCloset (category, color, size, brand, season, purchase_date, price, notes)\n" +
                     "VALUES \n" +
-                    "    (?, ?, ?, ?);\n";
+                    "    (?, ?, ?, ?, ?, ?, ?, ?);\n";
             preparedStatement = connection.prepareStatement(sql);
-
-            preparedStatement.setString(1, userCloset.getColor());
-            preparedStatement.setString(2, userCloset.getNotes());
-            // 만약 값이 없으면 setNull로 처리
-            if (userCloset.getClothes_id() != 0) {
-                preparedStatement.setInt(3, userCloset.getClothes_id());
-            } else {
-                preparedStatement.setNull(3, java.sql.Types.INTEGER);
-            }
-
-            preparedStatement.setInt(4, userCloset.getUser_id());
-
-
+            preparedStatement.setString(1, closet.getCategory());
+            preparedStatement.setString(2, closet.getColor());
+            preparedStatement.setString(3, closet.getSize());
+            preparedStatement.setString(4, closet.getBrand());
+            preparedStatement.setString(5, closet.getSeason());
+            //closet.getPurchase_date() 값이 없어서 java.lang.NullPointerException 나옴
+            //entity키와 클라이언트 키 이름이 달라서 매핑이 안되었음
+            preparedStatement.setDate(6, Date.valueOf(closet.getPurchase_date()));
+            preparedStatement.setInt(7, closet.getPrice());
+            preparedStatement.setString(8, closet.getNotes());
 
             preparedStatement.executeUpdate();
 
@@ -66,37 +63,8 @@ public class ClosetDao {
     }
 
 
-    public int getUserClosetCount() throws SQLException {
-
-        connection = databaseConnector.getConnection();
-        preparedStatement = connection.prepareStatement("select count(*) from userCloset");
-        ResultSet rs = preparedStatement.executeQuery();
-        rs.next();
-        int count = rs.getInt(1);
-        return count;
-
-
-//        PreparedStatement ps = c.prepareStatement("select count(*) from users");
-//
-//        ResultSet rs = ps.executeQuery();
-//        rs.next();
-//        int count = rs.getInt(1);
-//
-//        rs.close();
-//        ps.close();
-//        c.close();
-//
-//        return count;
-
-
-
-
-
-
-    }
-
-    public Integer find(UserCloset userCloset){
-        return  userCloset.getId();
+    public Integer find(Closet closet){
+        return  closet.getId();
 
 
     }

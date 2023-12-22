@@ -1,10 +1,12 @@
 package com.favorite.project.controller.api;
 
+
 import com.favorite.project.entity.UserCloset;
 import com.favorite.project.exceptions.SQLExceptionHandler;
 import com.favorite.project.service.ClosetService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.client.HttpStatusCodeException;
@@ -31,6 +33,7 @@ public class ClosetController {
 
 
     @PostMapping
+
     public ResponseEntity<Object> addCloset(@RequestBody UserCloset userCloset){
 
         try{
@@ -45,6 +48,7 @@ public class ClosetController {
             errorResponse.put("error",errorMessage);
            return new ResponseEntity<>(errorResponse,HttpStatus.BAD_REQUEST);
         }
+
 
 
 
