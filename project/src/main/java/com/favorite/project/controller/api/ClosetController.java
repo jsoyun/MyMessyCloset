@@ -9,10 +9,6 @@ import org.springframework.http.HttpStatus;
 
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.client.HttpStatusCodeException;
-import org.springframework.web.client.ResponseErrorHandler;
-import org.springframework.web.client.RestClientException;
-import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExceptionHandler;
 
 import java.sql.SQLException;
 import java.util.HashMap;
@@ -26,7 +22,7 @@ public class ClosetController {
     private final ClosetService closetService;
 
     @Autowired
-    public ClosetController(ClosetService closetService){
+    public ClosetController(ClosetService closetService) {
         this.closetService = closetService;
 
     }
@@ -34,22 +30,20 @@ public class ClosetController {
 
     @PostMapping
 
-    public ResponseEntity<Object> addCloset(@RequestBody UserCloset userCloset){
+    public ResponseEntity<Object> addCloset(@RequestBody UserCloset userCloset) {
 
-        try{
+        try {
             closetService.addCloset(userCloset);
-            Map<String,String> successResponse = new HashMap<>();
+            Map<String, String> successResponse = new HashMap<>();
             successResponse.put("message", "옷장이 생성되었습니다.");
             return ResponseEntity.ok(successResponse);
 
-        } catch (SQLException e){
+        } catch (SQLException e) {
             String errorMessage = SQLExceptionHandler.handleSQLException(e);
             Map<String, String> errorResponse = new HashMap<>();
-            errorResponse.put("error",errorMessage);
-           return new ResponseEntity<>(errorResponse,HttpStatus.BAD_REQUEST);
+            errorResponse.put("error", errorMessage);
+            return new ResponseEntity<>(errorResponse, HttpStatus.BAD_REQUEST);
         }
-
-
 
 
     }
