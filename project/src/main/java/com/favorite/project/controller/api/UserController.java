@@ -36,10 +36,10 @@ public class UserController {
         return userService.insertOneUser(userDTO);
 
     }
-//
-//    @GetMapping(value = "/testSelect")
-//    public List<Users> test() {
-//        return userMapper.select();
-//    }
+
+    @GetMapping(value = "/testSelect")
+    public List<Users> test() {
+        return userService.select();
+    }
 
 }

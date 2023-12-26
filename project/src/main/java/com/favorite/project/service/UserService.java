@@ -44,4 +44,9 @@ public class UserService {
     }
 
 
+    public List<Users> select() {
+        return userMapper.select();
+    }
+
+
 }
