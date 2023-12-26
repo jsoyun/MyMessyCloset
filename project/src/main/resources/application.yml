@@ -11,9 +11,14 @@ spring:
       minimum-idle: 5
       max-lifetime: 240000
       maximum-pool-size: 15
+mybatis:
+  mapper-locations: classpath:mapper/*.xml
+  map-underscore-to-camel-case: true
+  #        default-fetch-size: 100
+  #        default-statement-timeout: 30
 
 
-      #스레드 풀의 동작을 조정
+  #스레드 풀의 동작을 조정
 #  task:
 #    execution:
 #      pool:
