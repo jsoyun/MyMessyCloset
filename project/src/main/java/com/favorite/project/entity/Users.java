@@ -6,9 +6,11 @@ import lombok.Getter;
 @Getter
 @Builder
 public class Users {
-    private int user_id;
+    private int userId;
     private String email;
     private String name;
     private String password;
-    private int userCloset_id;
+    private Integer userClosetId;
+
+
 }
