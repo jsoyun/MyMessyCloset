@@ -15,7 +15,6 @@ import org.springframework.context.annotation.PropertySource;
 import javax.sql.DataSource;
 
 @Configuration
-@MapperScan(basePackages = "com.favorite.project.mapper")
 @PropertySource("classpath:/application.yml")
 public class MariaDBConfig {
 
