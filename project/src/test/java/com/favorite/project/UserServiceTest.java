@@ -34,4 +34,19 @@ public class UserServiceTest {
     }
 
 
+    @Test
+    public void InsertUserAsDuplicateEmail() {
+
+
+        Users user = Users.builder()
+                .name("가나다")
+                .email("test@test") //중복되는 이메일
+                .password("123")
+                .build();
+
+        Assertions.assertThrows(DataAccessException.class, () -> userMapper.insert(user));
+
+    }
+
+
 }
