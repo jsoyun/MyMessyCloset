@@ -32,17 +32,17 @@ public class MariaDBConfig {
         return dataSource;
     }
 
-    @Bean
-    public SqlSessionFactory sqlSessionFactory() throws Exception {
-        SqlSessionFactoryBean factoryBean = new SqlSessionFactoryBean();
-        System.out.println("factoryBean = " + factoryBean);
-        factoryBean.setDataSource(dataSource());
-        factoryBean.setTypeAliasesPackage("com.favorite.project.mapper");
-        return factoryBean.getObject();
-    }
-
-    @Bean
-    public SqlSessionTemplate sqlSession(SqlSessionFactory sqlSessionFactory) {
-        return new SqlSessionTemplate(sqlSessionFactory);
-    }
+//    @Bean
+//    public SqlSessionFactory sqlSessionFactory() throws Exception {
+//        SqlSessionFactoryBean factoryBean = new SqlSessionFactoryBean();
+//        System.out.println("factoryBean = " + factoryBean);
+//        factoryBean.setDataSource(dataSource());
+//        factoryBean.setTypeAliasesPackage("com.favorite.project.mapper");
+//        return factoryBean.getObject();
+//    }
+//
+//    @Bean
+//    public SqlSessionTemplate sqlSession(SqlSessionFactory sqlSessionFactory) {
+//        return new SqlSessionTemplate(sqlSessionFactory);
+//    }
 }
