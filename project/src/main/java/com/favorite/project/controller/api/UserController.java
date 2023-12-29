@@ -5,7 +5,8 @@ package com.favorite.project.controller.api;
 import com.favorite.project.dto.UserDTO;
 import com.favorite.project.entity.Users;
 import com.favorite.project.service.UserService;
-//import org.h2.engine.User;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -15,6 +16,9 @@ import java.util.List;
 @RestController
 @RequestMapping(value = "/users")
 public class UserController {
+
+    private Logger logger = LoggerFactory.getLogger(getClass());
+
     @Autowired
     private UserService userService;
 
@@ -26,7 +30,20 @@ public class UserController {
 
     @GetMapping
     public List<Users> getAllUsers() {
-        return userService.getAllUsers();
+
+//        return userService.getAllUsers();
+
+//        try {
+//            return userService.select();
+//        } catch (RuntimeException runtimeException) {
+//            logger.error(String.valueOf(runtimeException));
+//            return
+//
+//
+//        }
+
+        return userService.select();
+
 
     }
 
@@ -37,9 +54,5 @@ public class UserController {
 
     }
 
-    @GetMapping(value = "/testSelect")
-    public List<Users> test() {
-        return userService.select();
-    }
 
 }
