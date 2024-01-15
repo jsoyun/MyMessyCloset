@@ -51,17 +51,9 @@ public class UserService {
             return true;
 
 
-        } catch (DataAccessException dataAccessException) {
-            logger.error(dataAccessException.getMessage());
+        } catch (Exception exception) {
+            logger.error(exception.getMessage());
             return false;
-
-        } catch (PersistenceException persistenceException) {
-            logger.error("persistenceException", persistenceException);
-            return false;
-        } catch (IllegalArgumentException illegalArgumentException) {
-            logger.error("illegalArgumentException", illegalArgumentException);
-            return false;
-
         }
 
 
@@ -73,9 +65,9 @@ public class UserService {
 
             return userMapper.select();
 
-        } catch (PersistenceException persistenceException) {
-            logger.error("List<user> select(): {}", persistenceException.getMessage());
-            throw new RuntimeException(persistenceException);
+        } catch (Exception exception) {
+            logger.error("List<user> select(): {}", exception.getMessage());
+            throw new RuntimeException(exception);
 
         }
 
