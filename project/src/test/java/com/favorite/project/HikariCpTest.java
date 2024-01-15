@@ -2,7 +2,8 @@ package com.favorite.project;
 
 
 import com.favorite.project.dao.ClosetDao;
-import com.favorite.project.entity.Closet;
+//import com.favorite.project.entity.Closet;
+import com.favorite.project.entity.UserCloset;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -20,19 +21,16 @@ public class HikariCpTest {
     private ClosetDao closetDao;
 
 
-
     @Test
-    void save() throws SQLException,InterruptedException{
+    void save() throws SQLException, InterruptedException {
         int id = 1;
         int price = 1000;
-        String category ="카테고리임다";
+        String category = "카테고리임다";
 
 
         //builder 패턴으로 값 지정
-        Closet closet1 = Closet.builder()
+        UserCloset closet1 = UserCloset.builder()
                 .id(id)
-                .price(price)
-                .category(category)
                 .build();
 
 
@@ -49,7 +47,7 @@ public class HikariCpTest {
 //
 //        assertThat(closet1.getId()).isEqualTo(findCloset);
         assertThat(closet1.getId()).isEqualTo(id);
-        assertThat(closet1.getCategory()).isEqualTo(category);
+//        assertThat(closet1.getCategory()).isEqualTo(category);
 
 
     }
