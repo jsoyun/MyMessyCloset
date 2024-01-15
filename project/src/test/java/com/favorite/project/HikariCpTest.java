@@ -2,7 +2,6 @@ package com.favorite.project;
 
 
 import com.favorite.project.dao.ClosetDao;
-//import com.favorite.project.entity.Closet;
 import com.favorite.project.entity.UserCloset;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -33,23 +32,11 @@ public class HikariCpTest {
                 .id(id)
                 .build();
 
-
-//        closet.setColor("노랑파랑입니다");
-//        closet.setNotes("단순기록");
-//        closet.setSeason("겨울");
-//        closet.setSize("medium");
-//        closet.setBrand("엘레강스브랜드");
-//        closet.setPurchase_date(LocalDate.of(2024, 1, 1));
-//
-//
-//        Integer findCloset =
-//                closetDao.find(closet);
-//
-//        assertThat(closet1.getId()).isEqualTo(findCloset);
         assertThat(closet1.getId()).isEqualTo(id);
 //        assertThat(closet1.getCategory()).isEqualTo(category);
 
 
     }
+
 
 }
