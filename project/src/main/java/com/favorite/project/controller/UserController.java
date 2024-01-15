@@ -1,4 +1,4 @@
-package com.favorite.project.controller.api;
+package com.favorite.project.controller;
 
 //import com.favorite.project.mapper.UserMapper;
 
@@ -9,6 +9,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.ModelAndView;
 
 import java.util.List;
 //import org.springframework.web.bind.annotation.ResponseBody;
@@ -28,6 +29,7 @@ public class UserController {
     }
 
 
+    //json객체
     @GetMapping
     public List<Users> getAllUsers() {
 
@@ -54,5 +56,21 @@ public class UserController {
 
     }
 
+    //뷰로 가져오기
+    @GetMapping("/showUser")
+    public ModelAndView user() {
+        ModelAndView modelAndView = new ModelAndView();
+        modelAndView.setViewName("userList");
+        return modelAndView;
+    }
+
+
+//    @GetMapping(value = "/testSelect")
+//    public List<Users> test() {
+//        return userService.select();
+//    }   @GetMapping(value = "/testSelect")
+//    public List<Users> test() {
+//        return userService.select();
+//    }
 
 }

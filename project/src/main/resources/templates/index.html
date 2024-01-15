@@ -13,37 +13,10 @@
 <div id="dataContainer"></div>
 <script>
     $(document).ready(function () {
-        $('#getDataButton').click( function (){
-            $.ajax({
-                url: "/showUserData",
-                method:"get",
-                dataType: "json",
-                success: function (data) {
-                    displayData(data)
-                    
-                },
-                error: function(xhr, status, error) {
-                    console.error("서버 데이터 요청 중 오류:", status, error);
-                    showAlertAndRedirect();
-
-
-                }
-
-            });
-            });
-        function displayData(data) {
-            $('#dataContainer').html(`<p>Name: ${data.name}, Age: ${data.age}</p>`);
-
-        }
-        function showAlertAndRedirect() {
-            if(confirm("데이터를 가져오지 못했습니다. 회원가입 페이지로 이동하시겠습니까?")){
-                window.location.href ="/sign";
-
-            } else {
-
-            }
-
-        }
+        $('#getDataButton').click(function () {
+            window.location.href = "/users/showUser";
+        });
+        
     })
 </script>
 

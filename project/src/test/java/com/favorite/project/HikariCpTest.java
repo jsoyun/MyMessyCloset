@@ -33,9 +33,10 @@ public class HikariCpTest {
                 .build();
 
         assertThat(closet1.getId()).isEqualTo(id);
+//        assertThat(closet1.getCategory()).isEqualTo(category);
 
 
     }
-    
+
 
 }

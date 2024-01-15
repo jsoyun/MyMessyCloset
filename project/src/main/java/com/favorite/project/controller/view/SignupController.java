@@ -7,15 +7,19 @@ import org.springframework.web.bind.annotation.GetMapping;
 
 public class SignupController {
     @GetMapping("/index")
-    public String index(){
+    public String index() {
         return "/index";
     }
+
     @GetMapping("/login")
-    public String login(){
+    public String login() {
         return "/login";
     }
+
     @GetMapping("/sign")
-    public String sign(){
+    public String sign() {
         return "/sign";
     }
+
+
 }
