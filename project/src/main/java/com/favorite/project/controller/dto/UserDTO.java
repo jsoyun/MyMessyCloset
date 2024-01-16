@@ -1,4 +1,4 @@
-package com.favorite.project.dto;
+package com.favorite.project.controller.dto;
 
 import lombok.Builder;
 import lombok.Getter;

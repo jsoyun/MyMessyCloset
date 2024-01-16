@@ -1,4 +1,4 @@
-package com.favorite.project.entity;
+package com.favorite.project.domain.entity;
 
 import lombok.Builder;
 
