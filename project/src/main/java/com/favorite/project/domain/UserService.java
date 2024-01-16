@@ -1,21 +1,20 @@
-package com.favorite.project.service;
+package com.favorite.project.domain;
 
-import com.favorite.project.dto.UserDTO;
-import com.favorite.project.entity.Users;
+import com.favorite.project.controller.dto.UserDTO;
+import com.favorite.project.domain.entity.User;
 import com.favorite.project.mapper.UserMapper;
-import org.apache.ibatis.exceptions.PersistenceException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.dao.DataAccessException;
-import org.springframework.dao.DuplicateKeyException;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class UserService {
-    private Logger logger = LoggerFactory.getLogger(getClass());
+    private final Logger logger = LoggerFactory.getLogger(getClass());
     private final UserMapper userMapper;
+
 
     public UserService(UserMapper userMapper) {
         this.userMapper = userMapper;
@@ -27,12 +26,12 @@ public class UserService {
 //    }
 
 
-//    public Users getUserByEmail(UserDTO userDTO) {
-//        //id 값으로 조회하고 싶었는데.. 사용자는 email 주소를 검색해보니까
-//        return userMapper.getByEmail(userDTO.getEmail());
-//    }
+    public Optional<User> getUserByEmail(User user) {
 
-    public List<Users> getAllUsers() {
+        return Optional.ofNullable(userMapper.getByEmail(user.getEmail()));
+    }
+
+    public List<User> getAllUsers() {
         return userMapper.getAllUsers();
     }
 
@@ -40,7 +39,7 @@ public class UserService {
 
         try {
 
-            Users user = Users.builder()
+            User user = User.builder()
                     .name(userDTO.getName())
                     .email(userDTO.getEmail())
                     .password(userDTO.getPassword())
@@ -60,7 +59,7 @@ public class UserService {
     }
 
 
-    public List<Users> select() {
+    public List<User> select() {
         try {
 
             return userMapper.select();

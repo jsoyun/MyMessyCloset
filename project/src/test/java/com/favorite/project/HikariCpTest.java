@@ -1,14 +1,13 @@
 package com.favorite.project;
 
 
-import com.favorite.project.dao.ClosetDao;
-import com.favorite.project.entity.UserCloset;
+import com.favorite.project.config.dao.ClosetDao;
+import com.favorite.project.domain.entity.UserCloset;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
 import java.sql.SQLException;
-import java.time.LocalDate;
 
 import static org.assertj.core.api.Assertions.assertThat;
 

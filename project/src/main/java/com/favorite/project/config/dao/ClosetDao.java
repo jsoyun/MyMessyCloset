@@ -1,7 +1,7 @@
-package com.favorite.project.dao;
+package com.favorite.project.config.dao;
 
 
-import com.favorite.project.entity.UserCloset;
+import com.favorite.project.domain.entity.UserCloset;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
