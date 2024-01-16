@@ -1,8 +1,7 @@
 package com.favorite.project;
 
 
-import com.favorite.project.dto.UserDTO;
-import com.favorite.project.entity.Users;
+import com.favorite.project.domain.entity.User;
 import com.favorite.project.mapper.UserMapper;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
@@ -26,7 +25,7 @@ public class UserServiceTest {
     public void InsertUserAsNull_WithColumnShouldNotNull() {
 
 
-        Users user = Users.builder()
+        User user = User.builder()
                 .build();
 
         Assertions.assertThrows(DataAccessException.class, () -> userMapper.insert(user));
@@ -38,7 +37,7 @@ public class UserServiceTest {
     public void InsertUserAsDuplicateEmail() {
 
 
-        Users user = Users.builder()
+        User user = User.builder()
                 .name("가나다")
                 .email("test@test") //중복되는 이메일
                 .password("123")

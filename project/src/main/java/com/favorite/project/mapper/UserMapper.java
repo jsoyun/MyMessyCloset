@@ -1,6 +1,6 @@
 package com.favorite.project.mapper;
 
-import com.favorite.project.entity.Users;
+import com.favorite.project.domain.entity.User;
 import org.apache.ibatis.annotations.*;
 
 import java.util.List;
@@ -9,19 +9,19 @@ import java.util.List;
 public interface UserMapper {
 
     @Select("SELECT * FROM Users")
-    List<Users> getAllUsers();
+    List<User> getAllUsers();
 
     @Select("SELECT * FROM Users WHERE user_id = #{id}")
-    Users getById(@Param("userId") Long userID);
+    User getById(@Param("userId") Long userID);
 
     @Select("SELECT * FROM Users WHERE email = #{email}")
-    Users getByEmail(@Param("email") String email);
+    User getByEmail(@Param("email") String email);
 
     @Insert("INSERT INTO Users (email, name, password) VALUES(#{user.email} , #{user.name}, #{user.password})")
-    boolean insert(@Param("user") Users users);
+    boolean insert(@Param("user") User users);
 
 
     //xml 사용하고 싶은데 안됨.
-    List<Users> select();
+    List<User> select();
 
 }
