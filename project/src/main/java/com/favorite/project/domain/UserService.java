@@ -12,7 +12,7 @@ import java.util.Optional;
 
 @Service
 public class UserService {
-    private Logger logger = LoggerFactory.getLogger(getClass());
+    private final Logger logger = LoggerFactory.getLogger(getClass());
     private final UserMapper userMapper;
 
 
@@ -27,7 +27,7 @@ public class UserService {
 
 
     public Optional<User> getUserByEmail(User user) {
-        
+
         return Optional.ofNullable(userMapper.getByEmail(user.getEmail()));
     }
 
