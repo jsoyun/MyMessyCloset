@@ -1,8 +1,8 @@
-package com.favorite.project.domain;
+package com.favorite.project.User;
 
-import com.favorite.project.controller.dto.UserDTO;
-import com.favorite.project.domain.entity.User;
-import com.favorite.project.mapper.UserMapper;
+import com.favorite.project.User.dto.UserDTO;
+import com.favorite.project.User.domain.User;
+import com.favorite.project.User.mapper.UserMapper;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;

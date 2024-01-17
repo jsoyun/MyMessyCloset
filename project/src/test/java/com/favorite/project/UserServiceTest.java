@@ -1,8 +1,8 @@
 package com.favorite.project;
 
 
-import com.favorite.project.domain.entity.User;
-import com.favorite.project.mapper.UserMapper;
+import com.favorite.project.User.domain.User;
+import com.favorite.project.User.mapper.UserMapper;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;

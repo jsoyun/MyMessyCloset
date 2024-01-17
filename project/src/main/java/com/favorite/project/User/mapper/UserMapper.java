@@ -1,6 +1,6 @@
-package com.favorite.project.mapper;
+package com.favorite.project.User.mapper;
 
-import com.favorite.project.domain.entity.User;
+import com.favorite.project.User.domain.User;
 import org.apache.ibatis.annotations.*;
 
 import java.util.List;

@@ -1,7 +1,7 @@
-package com.favorite.project.domain.login;
+package com.favorite.project.User;
 
-import com.favorite.project.domain.entity.User;
-import com.favorite.project.mapper.UserMapper;
+import com.favorite.project.User.domain.User;
+import com.favorite.project.User.mapper.UserMapper;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
