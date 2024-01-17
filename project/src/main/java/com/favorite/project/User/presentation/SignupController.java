@@ -1,4 +1,4 @@
-package com.favorite.project.controller.view;
+package com.favorite.project.User.presentation;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;

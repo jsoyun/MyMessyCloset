@@ -1,9 +1,7 @@
-package com.favorite.project.domain.login;
+package com.favorite.project.User;
 
-import com.favorite.project.controller.dto.login.LoginForm;
-import com.favorite.project.domain.UserService;
-import com.favorite.project.domain.entity.User;
-import com.favorite.project.mapper.UserMapper;
+import com.favorite.project.User.dto.LoginForm;
+import com.favorite.project.User.domain.User;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;

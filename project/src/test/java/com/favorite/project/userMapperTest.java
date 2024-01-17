@@ -1,7 +1,7 @@
 package com.favorite.project;
 
-import com.favorite.project.domain.entity.User;
-import com.favorite.project.mapper.UserMapper;
+import com.favorite.project.User.domain.User;
+import com.favorite.project.User.mapper.UserMapper;
 import lombok.extern.slf4j.Slf4j;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
@@ -12,7 +12,6 @@ import org.mockito.MockitoAnnotations;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Collectors;
 
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;

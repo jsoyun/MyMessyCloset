@@ -1,13 +1,12 @@
-package com.favorite.project.controller;
+package com.favorite.project.User;
 
 //import com.favorite.project.mapper.UserMapper;
 
-import com.favorite.project.domain.ClosetService;
-import com.favorite.project.domain.entity.User;
-import com.favorite.project.domain.entity.UserCloset;
-import com.favorite.project.controller.dto.UserDTO;
-import com.favorite.project.domain.UserService;
-import com.favorite.project.exceptions.SQLExceptionHandler;
+import com.favorite.project.Closet.ClosetService;
+import com.favorite.project.User.domain.User;
+import com.favorite.project.Closet.domain.UserCloset;
+import com.favorite.project.User.dto.UserDTO;
+import com.favorite.project.User.exceptions.SQLExceptionHandler;
 import lombok.extern.slf4j.Slf4j;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

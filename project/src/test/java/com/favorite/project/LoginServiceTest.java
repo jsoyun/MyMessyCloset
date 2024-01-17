@@ -1,18 +1,14 @@
 package com.favorite.project;
 
 
-import com.favorite.project.controller.dto.login.LoginForm;
-import com.favorite.project.domain.UserService;
-import com.favorite.project.domain.entity.User;
-import com.favorite.project.domain.login.LoginService;
-import com.favorite.project.mapper.UserMapper;
+import com.favorite.project.User.dto.LoginForm;
+import com.favorite.project.User.domain.User;
+import com.favorite.project.User.LoginService;
 import lombok.RequiredArgsConstructor;
-import org.aspectj.lang.annotation.Before;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 

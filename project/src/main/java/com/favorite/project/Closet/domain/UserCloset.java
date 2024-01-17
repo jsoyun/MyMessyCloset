@@ -1,4 +1,4 @@
-package com.favorite.project.domain.entity;
+package com.favorite.project.Closet.domain;
 
 import lombok.Builder;
 import lombok.Getter;
