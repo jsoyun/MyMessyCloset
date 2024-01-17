@@ -12,6 +12,8 @@ import java.util.Optional;
 
 @Service
 public class UserService {
+
+    //응집도 : 관련된 게 잘 모여있어야한다.
     private final Logger logger = LoggerFactory.getLogger(getClass());
     private final UserMapper userMapper;
 
