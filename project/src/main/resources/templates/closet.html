@@ -7,41 +7,38 @@
 <body>
 <h3>옷장 페이지 압니다</h3>
 <h2>Closet Input Form</h2>
-<form id="closetForm">
+<form id="closetForm" method="post">
+    <label for="name">name:</label>
+    <input type="text" id="name" name="name"><br>
 
     <label for="color">Color:</label>
     <input type="text" id="color" name="color"><br>
-    <label for="clothes_id">clothes:</label>
-    <input type="number" id="clothes_id" name="clothes_id"><br>
-
-    <label for="user_id">user_id:</label>
-
-    <input type="number" id="user_id" name="user_id" th:value="${user_id}"><br>
 
 
     <label for="notes">Notes:</label>
     <textarea id="notes" name="notes" rows="4" cols="50"></textarea><br>
 
-    <!--    <input type="submit" value="Submit" onclick="submitForm()">-->
+    <label for="user_id">user_id:</label>
+    <input type="number" id="user_id" name="user_id" th:value="${user_id}"><br>
     <button type="button" onclick="submitForm()">제출</button>
 </form>
 
 <script>
     function submitForm() {
 
+        var name = document.getElementById("name").value;
         var color = document.getElementById("color").value;
-        var clothes_id = document.getElementById("clothes_id").value;
         var user_id = document.getElementById("user_id").value;
         var notes = document.getElementById("notes").value;
 
 
-        var url = '/api/AddCloset'
+        var url = '/closet'
 
         var data = {
-            color     : color,
-            clothes_id: clothes_id,
-            user_id   : user_id,
-            notes     : notes
+            name   : name,
+            color  : color,
+            user_id: user_id,
+            notes  : notes
 
         };
 
