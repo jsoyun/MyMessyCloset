@@ -9,7 +9,10 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import javax.servlet.http.Cookie;
+import javax.servlet.http.HttpServletResponse;
 import javax.validation.Valid;
 
 @Slf4j
@@ -28,7 +31,7 @@ public class LoginController {
     }
 
     @PostMapping("/login")
-    public String login(@Valid @ModelAttribute("loginForm") LoginForm loginForm, BindingResult bindingResult) {
+    public String login(@Valid @ModelAttribute("loginForm") LoginForm loginForm, BindingResult bindingResult, HttpServletResponse response, RedirectAttributes redirectAttributes) {
         if (bindingResult.hasErrors()) {
             log.error("bindingResult.hasErrors-[GetMapping/login]");
             return "/loginForm";
@@ -44,7 +47,19 @@ public class LoginController {
 
         }
 
-        return "redirect:/";
+        //Cookie
+        Cookie idCookie = new Cookie("user_id", String.valueOf(user.getUserId()));
+        response.addCookie(idCookie);
+
+
+        //아 여기서 그대로 담아서 보내주고 있구나.
+
+        redirectAttributes.addAttribute("user_id", user.getUserId());
+
+
+        //
+
+        return "redirect:/closet/{user_id}";
 
 
     }

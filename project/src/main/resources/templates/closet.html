@@ -9,13 +9,14 @@
 <h2>Closet Input Form</h2>
 <form id="closetForm">
 
-
     <label for="color">Color:</label>
     <input type="text" id="color" name="color"><br>
     <label for="clothes_id">clothes:</label>
     <input type="number" id="clothes_id" name="clothes_id"><br>
+
     <label for="user_id">user_id:</label>
-    <input type="number" id="user_id" name="user_id"><br>
+
+    <input type="number" id="user_id" name="user_id" th:value="${user_id}"><br>
 
 
     <label for="notes">Notes:</label>
