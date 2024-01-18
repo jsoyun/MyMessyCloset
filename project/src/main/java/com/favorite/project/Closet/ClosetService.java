@@ -1,26 +1,28 @@
 package com.favorite.project.Closet;
 
-import com.favorite.project.Closet.dao.ClosetDao;
+import com.favorite.project.Closet.Mapper.ClosetMapper;
 
 import com.favorite.project.Closet.domain.UserCloset;
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.sql.SQLException;
+import java.util.List;
 
 @Service
+@RequiredArgsConstructor
 public class ClosetService {
 
-    private final ClosetDao closetDao;
+    private final ClosetMapper closetMapper;
 
-    @Autowired
-    public ClosetService(ClosetDao closetDao) {
-        this.closetDao = closetDao;
+
+    public List<UserCloset> getAllUserClosets() {
+        return closetMapper.getAllUserClosets();
     }
 
-    //    @Transactional
-    public void addCloset(UserCloset userCloset) throws SQLException {
-        closetDao.addCloset(userCloset);
+    public boolean insertUserCloset(UserCloset userCloset) throws SQLException {
+        closetMapper.insertUserCloset(userCloset);
+        return true;
 
     }
 
