@@ -34,12 +34,5 @@ public class ClosetController {
         return "/closet";
     }
 
-    @GetMapping("/closet")
-    public String getAllCloset() {
-        closetService.getAllUserClosets();
-        return "/closetList";
-
-    }
-
 
 }
