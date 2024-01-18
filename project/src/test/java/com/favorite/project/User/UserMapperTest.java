@@ -1,4 +1,4 @@
-package com.favorite.project;
+package com.favorite.project.User;
 
 import com.favorite.project.User.domain.User;
 import com.favorite.project.User.mapper.UserMapper;
@@ -18,7 +18,7 @@ import static org.mockito.Mockito.when;
 
 @Slf4j
 //@MybatisTest
-public class userMapperTest {
+public class UserMapperTest {
     @Mock
     private UserMapper userMapper;
 
