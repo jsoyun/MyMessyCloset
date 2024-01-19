@@ -1,4 +1,4 @@
-package com.favorite.project;
+package com.favorite.project.User;
 
 
 import com.favorite.project.User.domain.User;

@@ -81,37 +81,5 @@ public class UserController {
 //        return userService.select();
 //    }
 
-    @RestController
-    @RequestMapping("/api/AddCloset")
-    public static class ClosetController {
 
-        private final ClosetService closetService;
-
-        @Autowired
-        public ClosetController(ClosetService closetService) {
-            this.closetService = closetService;
-
-        }
-
-
-        @PostMapping
-
-        public ResponseEntity<Object> addCloset(@RequestBody UserCloset userCloset) {
-
-            try {
-                closetService.addCloset(userCloset);
-                Map<String, String> successResponse = new HashMap<>();
-                successResponse.put("message", "옷장이 생성되었습니다.");
-                return ResponseEntity.ok(successResponse);
-
-            } catch (SQLException e) {
-                String errorMessage = SQLExceptionHandler.handleSQLException(e);
-                Map<String, String> errorResponse = new HashMap<>();
-                errorResponse.put("error", errorMessage);
-                return new ResponseEntity<>(errorResponse, HttpStatus.BAD_REQUEST);
-            }
-
-
-        }
-    }
 }
