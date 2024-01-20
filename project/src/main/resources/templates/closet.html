@@ -7,7 +7,7 @@
 <body>
 <h3>옷장 페이지 압니다</h3>
 <h2>Closet Input Form</h2>
-<form id="closetForm" method="post">
+<form id="closetForm">
     <label for="name">name:</label>
     <input type="text" id="name" name="name"><br>
 
@@ -35,10 +35,10 @@
         var url = '/closet'
 
         var data = {
-            name   : name,
-            color  : color,
-            user_id: user_id,
-            notes  : notes
+            name  : name,
+            color : color,
+            userId: user_id,
+            notes : notes
 
         };
 
