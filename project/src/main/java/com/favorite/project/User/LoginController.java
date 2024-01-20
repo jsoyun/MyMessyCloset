@@ -14,6 +14,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletResponse;
 import javax.validation.Valid;
+import java.util.Optional;
 
 @Slf4j
 @Controller
@@ -30,6 +31,7 @@ public class LoginController {
 
     }
 
+    //TODO: form으로 하던 json으로
     @PostMapping("/login")
     public String login(@Valid @ModelAttribute("loginForm") LoginForm loginForm, BindingResult bindingResult, HttpServletResponse response, RedirectAttributes redirectAttributes) {
         if (bindingResult.hasErrors()) {
@@ -38,9 +40,9 @@ public class LoginController {
 
         }
 
-        User user = loginService.checkLoginForm(loginForm);
+        Optional<User> user = loginService.checkLoginForm(loginForm);
 
-        if (user == null) {
+        if (user.isPresent()) {
 
             bindingResult.reject("loginFail", "일치하는 회원정보가 없습니다. 다시 시도해주세요");
             return "/loginForm";
@@ -48,16 +50,11 @@ public class LoginController {
         }
 
         //Cookie
-        Cookie idCookie = new Cookie("user_id", String.valueOf(user.getUserId()));
+        Cookie idCookie = new Cookie("user_id", String.valueOf(user.get().getUserId()));
         response.addCookie(idCookie);
 
 
-        //아 여기서 그대로 담아서 보내주고 있구나.
-
-        redirectAttributes.addAttribute("user_id", user.getUserId());
-
-
-        //
+        redirectAttributes.addAttribute("user_id", user.get().getUserId());
 
         return "redirect:/closet/{user_id}";
 
