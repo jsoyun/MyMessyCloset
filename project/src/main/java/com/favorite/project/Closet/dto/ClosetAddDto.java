@@ -11,14 +11,14 @@ public class ClosetAddDto {
     private String name;
     private String color;
     private String notes;
-    private int userId;
+    private int user_id;
 
     public UserCloset toUserClosetEntity() {
 
         return UserCloset.builder().name(name)
                 .color(color)
                 .notes(notes)
-                .user_id(userId).build();
+                .user_id(user_id).build();
 
     }
 
