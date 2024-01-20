@@ -2,9 +2,9 @@ package com.favorite.project.Closet.presentation;
 
 import com.favorite.project.Closet.ClosetService;
 import com.favorite.project.Closet.domain.UserCloset;
+import com.favorite.project.Closet.dto.ClosetAddDto;
 import com.favorite.project.User.exceptions.SQLExceptionHandler;
 import lombok.RequiredArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -23,6 +23,8 @@ public class ClosetRestController {
     @GetMapping("/closets")
     public List<UserCloset> getAllCloset() {
 
+        //TODO: 값이 없을 때 처리
+
         return closetService.getAllUserClosets();
 
     }
@@ -34,10 +36,9 @@ public class ClosetRestController {
 
 
     @PostMapping("/closet")
-    public ResponseEntity<Object> addCloset(@RequestBody UserCloset userCloset) {
-        System.out.println("userCloset.getName() = " + userCloset.getName());
+    public ResponseEntity<Object> addCloset(@RequestBody ClosetAddDto closetAddDto) {
         try {
-            closetService.insertUserCloset(userCloset);
+            closetService.insertUserCloset(closetAddDto);
             Map<String, String> successResponse = new HashMap<>();
             successResponse.put("message", "옷장이 생성되었습니다.");
             return ResponseEntity.ok(successResponse);
