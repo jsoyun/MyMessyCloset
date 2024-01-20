@@ -1,7 +1,8 @@
 package com.favorite.project;
 
 
-import com.favorite.project.Closet.dao.ClosetDao;
+//import com.favorite.project.Closet.dao.ClosetDao;
+
 import com.favorite.project.Closet.domain.UserCloset;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,8 +16,8 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 public class HikariCpTest {
 
-    @Autowired
-    private ClosetDao closetDao;
+//    @Autowired
+//    private ClosetDao closetDao;
 
 
     @Test
