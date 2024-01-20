@@ -1,0 +1,54 @@
+package com.favorite.project.User;
+
+import com.favorite.project.User.domain.User;
+import com.favorite.project.User.dto.LoginForm;
+import com.favorite.project.User.mapper.UserMapper;
+import lombok.extern.slf4j.Slf4j;
+import org.assertj.core.api.Assertions;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
+import org.mockito.InjectMocks;
+import org.mockito.Mock;
+import org.mockito.MockitoAnnotations;
+import org.mockito.junit.jupiter.MockitoExtension;
+
+import java.util.Optional;
+
+import static org.assertj.core.api.Assertions.assertThat;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.mockito.Mockito.*;
+
+@Slf4j
+@ExtendWith(MockitoExtension.class) //초기화로 mock 객체 가져옴
+public class LoginUserServiceTest {
+
+    @Mock
+    private UserMapper userMapper;
+
+    @InjectMocks
+    private LoginUserService loginUserService;
+    
+
+    @Test
+    void testGetUserByEmail() {
+        //Given
+        String userEmail = "test@example.com";
+        String password = "123";
+        User user = User.builder().email(userEmail).password(password).build();
+        when(userMapper.getByEmail(userEmail)).thenReturn(user); //조회해서 값이 있다고 가정했을 때
+
+        //when
+        Optional<User> result = loginUserService.getUserByEmail(user);
+
+        //Then
+        assertThat(result.isPresent()); //값이 있다고 나온다.
+        assertEquals(userEmail, result.get().getEmail());
+        assertEquals(password, result.get().getPassword());
+
+        //userMapper 목 객체에 대해 getByEmail메서드가 정확히 1번 호출되었는지 검증
+        verify(userMapper, times(1)).getByEmail(userEmail);
+
+
+    }
+}
