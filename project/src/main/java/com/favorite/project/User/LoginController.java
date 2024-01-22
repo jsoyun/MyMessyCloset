@@ -42,7 +42,7 @@ public class LoginController {
 
         Optional<User> user = loginService.checkLoginForm(loginForm);
 
-        if (user.isPresent()) {
+        if (user.isEmpty()) {
 
             bindingResult.reject("loginFail", "일치하는 회원정보가 없습니다. 다시 시도해주세요");
             return "/loginForm";
