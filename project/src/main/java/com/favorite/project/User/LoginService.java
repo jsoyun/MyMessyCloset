@@ -15,8 +15,7 @@ import java.util.Optional;
 @Service
 @RequiredArgsConstructor
 public class LoginService {
-
-    //로그인이 사용하는 LoginUserService 따로 만들기, 의존주입하면 userService안에 있는 메서드를 다 가져오는 문제.
+    
     private final LoginUserService loginUserService;
 
     public LoginResponseDTO checkLoginForm(LoginRequestDTO loginRequestDTO) {
@@ -24,6 +23,7 @@ public class LoginService {
         User userEmail = User.builder().email(email).build();
         String password = loginRequestDTO.getPassword();
 
+        //TODO: 이메일 조회 - 성공, 비밀번호 - 실패 : 실패 요인 담기
         Optional<User> userByEmail = loginUserService.getUserByEmail(userEmail);
         User user = userByEmail.filter(m -> m.getPassword().equals(password)).orElseThrow(() -> new NoSuchElementException("User not found"));
         LoginResponseDTO loginResponseDTO = LoginResponseDTO.builder().id(user.getUserId()).name(user.getName()).email(user.getEmail()).build();
