@@ -44,13 +44,9 @@ public class LoginController {
 
         try {
 
-            LoginResponseDTO loginResponseDTO = loginService.checkLoginForm(loginRequestDTO).map(user ->
+            LoginResponseDTO loginResponseDTO = loginService.checkLoginForm(loginRequestDTO);
 
 
-                    LoginResponseDTO.builder().id(user.getUserId()).email(user.getEmail()).name(user.getName()).build()).orElseThrow(() ->
-                    new RuntimeException("유효하지 않은 유저값")
-
-            );
             return ResponseEntity.ok(loginResponseDTO);
         } catch (Exception exception) {
 
