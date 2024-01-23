@@ -3,14 +3,15 @@ package com.favorite.project.User.dto;
 import lombok.Builder;
 import lombok.Getter;
 
+import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotEmpty;
 
 @Builder
 @Getter
 public class LoginForm {
-    @NotEmpty
+    @NotBlank
     private String email;
-    @NotEmpty
+    @NotBlank
     private String password;
 
 }
