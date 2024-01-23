@@ -57,8 +57,6 @@ public class LoginServiceTest {
         assertThat(result.get().getEmail().equals("so@naver.com"));
         assertThat(result.get().getPassword().equals("1234"));
 
-//        org.junit.jupiter.api.Assertions.assertNotEquals(result.);
-
 
     }
 
@@ -71,12 +69,8 @@ public class LoginServiceTest {
         when(loginUserService.getUserByEmail(any())).thenReturn(Optional.empty());
 
         User userEmail = User.builder().email("test@test").build();
-
-        //when
-//        Optional<User> result = loginService.checkLoginForm(loginForm); //실행시, java.util.NoSuchElementException: User not found
-
-        //then
-
+        // When: 특정 메서드를 호출 () -> 메서드 호출하면
+        // Then: 예외가 발생하는지 확인 NoSuchElementException이 나온다.
         assertThrows(NoSuchElementException.class, () ->
                 loginService.checkLoginForm(loginForm)
 
