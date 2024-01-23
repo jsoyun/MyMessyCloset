@@ -1,5 +1,6 @@
-package com.favorite.project.User;
+package com.favorite.project.User.RestController;
 
+import com.favorite.project.User.LoginService;
 import com.favorite.project.User.dto.LoginRequestDTO;
 import com.favorite.project.User.domain.User;
 import com.favorite.project.User.dto.LoginResponseDTO;
@@ -24,7 +25,7 @@ public class LoginController {
 
     private final LoginService loginService;
 
-    //차근차근 해봅시다.
+    //TODO: 예외 일괄처리 @ExceptionHandler 사용 (bindingResulte도 처리)
     @PostMapping
     public ResponseEntity<Object> login(@RequestBody @Valid LoginRequestDTO loginRequestDTO, BindingResult bindingResult) {
 
@@ -39,39 +40,18 @@ public class LoginController {
 
         }
 
-        //TODO: 잘못된 아이ㅣ안됨~!
-
 
         try {
 
             LoginResponseDTO loginResponseDTO = loginService.checkLoginForm(loginRequestDTO);
-
-
             return ResponseEntity.ok(loginResponseDTO);
         } catch (Exception exception) {
-
-            //java.util.NoSuchElementException: User not found
-            log.error("exception ={}", exception);
+            // User not found
+            log.error("exception = {}", exception);
             return ResponseEntity.badRequest().build();
-//            bindingResult.reject("loginFail", "일치하는 회원정보가 없습니다. 다시 시도해주세요");
         }
 
-
-//        if (loginResponseDTO.isEmpty()) {
-//
-//            bindingResult.reject("loginFail", "일치하는 회원정보가 없습니다. 다시 시도해주세요");
-////            return "redirect:/";
-//
-//        }
-
-
-        //TODO: 쿠키만들기
-
-//        //Cookie
-//        Cookie idCookie = new Cookie("user_id", String.valueOf(user.get().getUserId()));
-//        response.addCookie(idCookie);
-//
-//
+//TODO: 일치하는 회원정보가 없을 때 메인화면으로 리다이렉트
 
 
     }
