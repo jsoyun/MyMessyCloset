@@ -1,16 +1,12 @@
 package com.favorite.project.User;
 
 import com.favorite.project.User.domain.User;
-import com.favorite.project.User.dto.LoginForm;
 import com.favorite.project.User.mapper.UserMapper;
 import lombok.extern.slf4j.Slf4j;
-import org.assertj.core.api.Assertions;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
-import org.mockito.MockitoAnnotations;
 import org.mockito.junit.jupiter.MockitoExtension;
 
 import java.util.Optional;

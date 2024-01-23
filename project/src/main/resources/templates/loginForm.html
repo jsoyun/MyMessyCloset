@@ -11,35 +11,41 @@
 </head>
 <body>
 <h3>로그인</h3>
-<!--<form id="myForm" method="post">-->
-<!--    name :<input id="name">-->
-<!--    age: <input id="age">-->
-<!--    <button type="submit" onclick="submitForm()">전송</button>-->
-<!--</form>-->
 
-<form th:object="${loginForm}" th:action method="post">
+
+<form th:object="${loginForm}" th:action="@{/login}" method="post">
     email : <input type="text" th:field="${loginForm.email}"/>
     <span th:if="${#fields.hasErrors('email')}" th:errors="${loginForm.email}" style="color: red;"></span><br>
-    password : <input type="text" th:field="${loginForm.password}"/>
-    <span th:if="${#fields.hasErrors('password')}" th:errors="${loginForm.password}" style="color: red;"></span>
-    <br>
+    password : <input type="password" th:field="${loginForm.password}"/>
+    <span th:if="${#fields.hasErrors('password')}" th:errors="${loginForm.password}" style="color: red;"></span><br>
 
     <div th:if="${#fields.hasGlobalErrors()}">
-        <p class="field-error" th:each="err : ${#fields.globalErrors()}" style="color: red;"
-           th:text="${err}">전체 오류 메시지</p></div>
-    <button type="submit">Submit</button>
+        <p class="field-error" th:each="err : ${#fields.globalErrors()}" style="color: red;" th:text="${err}">전체 오류
+            메시지</p>
+    </div>
+
+    <button type="button" onclick="submitForm()">Submit</button>
 </form>
 
 
 <div id="dataContainer"></div>
 <script>
     function submitForm() {
-        var name = document.getElementById("name").value;
-        var age = document.getElementById("age").value;
+        var email = document.querySelector("input[name='email']").value;
+        var password = document.querySelector("input[name='password']").value;
 
-        var url = "/login?" + new URLSearchParams({name: name, age: age});
+        var url = "/login";
 
-        fetch(url)
+        fetch(url, {
+            method : 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body   : JSON.stringify({
+                email   : email,
+                password: password
+            })
+        })
             .then(response => {
                     if (response.ok) {
                         return response.json();
@@ -57,8 +63,10 @@
                 // document.body.appendChild(displayElement);
 
                 // 받은 데이터에 따라 처리
-                if (data === true) {
+                if (data) {
+
                     console.log("데이터가 true입니다.");
+                    window.location.href = "http://localhost:8080/"
                 } else if (data === false) {
                     console.log("데이터가 false입니다.");
                 } else {

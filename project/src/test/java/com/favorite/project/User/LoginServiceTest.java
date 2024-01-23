@@ -1,7 +1,7 @@
 package com.favorite.project.User;
 
 
-import com.favorite.project.User.dto.LoginForm;
+import com.favorite.project.User.dto.LoginRequestDTO;
 import com.favorite.project.User.domain.User;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
@@ -27,13 +27,13 @@ class LoginServiceTest {
     @InjectMocks
     private LoginService loginService;
 
-    private LoginForm loginForm;
+    private LoginRequestDTO loginForm;
     private User user;
 
     @BeforeEach
     public void init() {
         MockitoAnnotations.openMocks(this);
-        loginForm = LoginForm.builder().email("so@naver.com").password("1234").build();
+        loginForm = LoginRequestDTO.builder().email("so@naver.com").password("1234").build();
         user = User.builder().email(loginForm.getEmail()).password(loginForm.getPassword()).build();
     }
 

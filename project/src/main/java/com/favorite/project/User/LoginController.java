@@ -1,63 +1,81 @@
 package com.favorite.project.User;
 
-import com.favorite.project.User.dto.LoginForm;
+import com.favorite.project.User.dto.LoginRequestDTO;
 import com.favorite.project.User.domain.User;
+import com.favorite.project.User.dto.LoginResponseDTO;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.stereotype.Controller;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+import org.springframework.web.bind.annotation.*;
 
-import javax.servlet.http.Cookie;
-import javax.servlet.http.HttpServletResponse;
 import javax.validation.Valid;
+import java.util.HashMap;
+import java.util.NoSuchElementException;
+import java.util.Objects;
 import java.util.Optional;
 
 @Slf4j
-@Controller
+@RestController
+@RequestMapping("/login")
 @RequiredArgsConstructor
 public class LoginController {
 
     private final LoginService loginService;
 
-    //TODO: form으로 하던 json으로
+    //차근차근 해봅시다.
+    @PostMapping
+    public ResponseEntity<Object> login(@RequestBody @Valid LoginRequestDTO loginRequestDTO, BindingResult bindingResult) {
 
-    @GetMapping("/login")
-    public String loginForm(@ModelAttribute("loginForm") LoginForm loginForm) {
-        log.info("[GetMapping/loginForm]");
-        return "/loginForm";
-
-    }
-
-
-    @PostMapping("/login")
-    public String login(@Valid @ModelAttribute("loginForm") LoginForm loginForm, BindingResult bindingResult, HttpServletResponse response, RedirectAttributes redirectAttributes) {
         if (bindingResult.hasErrors()) {
             log.error("bindingResult.hasErrors-[GetMapping/login]");
-            return "/loginForm";
+            HashMap<String, String> errorMap = new HashMap<>();
+            bindingResult.getFieldErrors().forEach(error -> {
+                errorMap.put(error.getField(), error.getDefaultMessage());
+            });
+
+            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(errorMap);
 
         }
 
-        Optional<User> user = loginService.checkLoginForm(loginForm);
+        //TODO: 잘못된 아이ㅣ안됨~!
 
-        if (user.isEmpty()) {
 
-            bindingResult.reject("loginFail", "일치하는 회원정보가 없습니다. 다시 시도해주세요");
-            return "/loginForm";
+        try {
 
+            LoginResponseDTO loginResponseDTO = loginService.checkLoginForm(loginRequestDTO).map(user ->
+
+
+                    LoginResponseDTO.builder().id(user.getUserId()).email(user.getEmail()).name(user.getName()).build()).orElseThrow(() ->
+                    new RuntimeException("유효하지 않은 유저값")
+
+            );
+            return ResponseEntity.ok(loginResponseDTO);
+        } catch (Exception exception) {
+
+            //java.util.NoSuchElementException: User not found
+            log.error("exception ={}", exception);
+            return ResponseEntity.badRequest().build();
+//            bindingResult.reject("loginFail", "일치하는 회원정보가 없습니다. 다시 시도해주세요");
         }
 
-        //Cookie
-        Cookie idCookie = new Cookie("user_id", String.valueOf(user.get().getUserId()));
-        response.addCookie(idCookie);
+
+//        if (loginResponseDTO.isEmpty()) {
+//
+//            bindingResult.reject("loginFail", "일치하는 회원정보가 없습니다. 다시 시도해주세요");
+////            return "redirect:/";
+//
+//        }
 
 
-        redirectAttributes.addAttribute("user_id", user.get().getUserId());
+        //TODO: 쿠키만들기
 
-        return "redirect:/closet/{user_id}";
+//        //Cookie
+//        Cookie idCookie = new Cookie("user_id", String.valueOf(user.get().getUserId()));
+//        response.addCookie(idCookie);
+//
+//
 
 
     }

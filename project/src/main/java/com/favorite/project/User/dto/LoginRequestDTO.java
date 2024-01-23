@@ -4,11 +4,10 @@ import lombok.Builder;
 import lombok.Getter;
 
 import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.NotEmpty;
 
 @Builder
 @Getter
-public class LoginForm {
+public class LoginRequestDTO {
     @NotBlank
     private String email;
     @NotBlank
