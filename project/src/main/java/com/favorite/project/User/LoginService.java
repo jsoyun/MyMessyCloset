@@ -25,14 +25,16 @@ public class LoginService {
 
         Optional<User> userByEmail = loginUserService.getUserByEmail(userEmail);
 
-        if (userByEmail.isPresent()) {
-            return Optional.ofNullable(userByEmail.filter(m -> m.getPassword().equals(password)).orElse(null));
+//        if (userByEmail.isPresent()) {
+//            return userByEmail.filter(m -> m.getPassword().equals(password));
+//
+//        } else {
+//            throw new NoSuchElementException("User not found");
+//
+//
+//        }
 
-        } else {
-            throw new NoSuchElementException("User not found");
-
-
-        }
+        return Optional.ofNullable(userByEmail.filter(m -> m.getPassword().equals(password)).orElseThrow(() -> new NoSuchElementException("User not found")));
 
 
     }
