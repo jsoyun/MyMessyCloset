@@ -2,6 +2,7 @@ package com.favorite.project.User;
 
 import com.favorite.project.User.domain.User;
 import com.favorite.project.User.dto.LoginRequestDTO;
+import com.favorite.project.User.dto.LoginResponseDTO;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -42,13 +43,12 @@ public class LoginServiceBDDTest {
 
         //when
         //checkLoginForm 를 호출했을 때
-        Optional<User> result = loginService.checkLoginForm(loginForm);
+        LoginResponseDTO loginResponseDTO = loginService.checkLoginForm(loginForm);
 
         //then
         //값이 있고 이메일과 비밀번호도 같아야한다.
-        assertThat(result).isNotNull();
-        assertThat(result.get().getEmail().equals("so@naver.com"));
-        assertThat(result.get().getPassword().equals("1234"));
+        assertThat(loginResponseDTO).isNotNull();
+        assertThat(loginResponseDTO.getEmail().equals("so@naver.com"));
 
         then(loginUserService).should().getUserByEmail(any(User.class));
 
