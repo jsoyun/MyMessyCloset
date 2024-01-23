@@ -37,13 +37,13 @@
             };
 
             $.ajax({
-                url        : "/users",
+                url        : "/users/signup",
                 method     : "POST",
                 contentType: "application/json",
                 data       : JSON.stringify(jsonData),
                 success    : function (response) {
                     console.log("서버 응답:", response)
-                    window.location.href = "/index";
+                    window.location.href = "/";
 
 
                 },

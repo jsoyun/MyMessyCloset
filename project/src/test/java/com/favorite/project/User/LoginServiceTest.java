@@ -1,8 +1,9 @@
 package com.favorite.project.User;
 
 
-import com.favorite.project.User.dto.LoginForm;
+import com.favorite.project.User.dto.LoginRequestDTO;
 import com.favorite.project.User.domain.User;
+import com.favorite.project.User.dto.LoginResponseDTO;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -27,13 +28,13 @@ class LoginServiceTest {
     @InjectMocks
     private LoginService loginService;
 
-    private LoginForm loginForm;
+    private LoginRequestDTO loginForm;
     private User user;
 
     @BeforeEach
     public void init() {
         MockitoAnnotations.openMocks(this);
-        loginForm = LoginForm.builder().email("so@naver.com").password("1234").build();
+        loginForm = LoginRequestDTO.builder().email("so@naver.com").password("1234").build();
         user = User.builder().email(loginForm.getEmail()).password(loginForm.getPassword()).build();
     }
 
@@ -46,13 +47,12 @@ class LoginServiceTest {
 
         //when
         //checkLoginForm 를 호출했을 때
-        Optional<User> result = loginService.checkLoginForm(loginForm);
+        LoginResponseDTO loginResponseDTO = loginService.checkLoginForm(loginForm);
 
         //then
-        //값이 있고 이메일과 비밀번호도 같아야한다.
-        assertThat(result).isNotNull();
-        assertThat(result.filter(user -> user.getEmail().equals("so@naver.com")));
-        assertThat(result.filter(user -> user.getPassword().equals("1234")));
+        //값이 있고 이메일같다.
+        assertThat(loginResponseDTO).isNotNull();
+        assertThat(loginResponseDTO.getEmail().equals("so@naver.com"));
 
 
     }
