@@ -10,13 +10,13 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.dao.DataAccessException;
 
 @SpringBootTest
-public class UserServiceTest {
+public class UserDataServiceTest {
 
 
     private final UserMapper userMapper;
 
     @Autowired
-    public UserServiceTest(UserMapper userMapper) {
+    public UserDataServiceTest(UserMapper userMapper) {
         this.userMapper = userMapper;
     }
 

@@ -21,14 +21,14 @@ import static org.mockito.Mockito.*;
 
 @Slf4j
 @ExtendWith(MockitoExtension.class) //초기화로 mock 객체 가져옴
-public class LoginUserServiceTest {
+public class LoginUserDataServiceTest {
 
     @Mock
     private UserMapper userMapper;
 
     @InjectMocks
     private LoginUserService loginUserService;
-    
+
 
     @Test
     void testGetUserByEmail() {

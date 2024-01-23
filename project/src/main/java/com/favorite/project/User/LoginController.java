@@ -23,6 +23,7 @@ public class LoginController {
 
     private final LoginService loginService;
 
+    //TODO: form으로 하던 json으로
 
     @GetMapping("/login")
     public String loginForm(@ModelAttribute("loginForm") LoginForm loginForm) {
@@ -31,7 +32,7 @@ public class LoginController {
 
     }
 
-    //TODO: form으로 하던 json으로
+
     @PostMapping("/login")
     public String login(@Valid @ModelAttribute("loginForm") LoginForm loginForm, BindingResult bindingResult, HttpServletResponse response, RedirectAttributes redirectAttributes) {
         if (bindingResult.hasErrors()) {
