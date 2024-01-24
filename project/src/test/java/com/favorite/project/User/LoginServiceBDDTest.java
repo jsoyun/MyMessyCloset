@@ -39,7 +39,7 @@ public class LoginServiceBDDTest {
     void checkLoginFormTest() {
         //given
         //loginUserService가 email에 맞는 user값을 반환했다고 가정하면
-        given(loginUserService.getUserByEmail(any(User.class))).willReturn(Optional.of(user));
+        given(loginUserService.getUserByEmail(any(User.class))).willReturn(user);
 
         //when
         //checkLoginForm 를 호출했을 때
