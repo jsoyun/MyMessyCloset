@@ -4,6 +4,7 @@ package com.favorite.project.User;
 import com.favorite.project.User.dto.LoginRequestDTO;
 import com.favorite.project.User.domain.User;
 import com.favorite.project.User.dto.LoginResponseDTO;
+import com.favorite.project.User.mapper.UserMapper;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -43,7 +44,7 @@ class LoginServiceTest {
     void checkLoginFormTest() {
         //given
         //loginUserService가 email에 맞는 user값을 반환했다고 가정하면
-        when(loginUserService.getUserByEmail(any())).thenReturn(Optional.of(user));
+        when(loginUserService.getUserByEmail(any())).thenReturn(user);
 
         //when
         //checkLoginForm 를 호출했을 때
@@ -57,17 +58,17 @@ class LoginServiceTest {
 
     }
 
-    //TODO: 예외도 처리해야함
     @Test
     @DisplayName("loginUserService.getUserByEmail값이 없을 때 checkLoginForm 실패")
     void uncheckLoginFormTest() {
 
         //given
-        when(loginUserService.getUserByEmail(any())).thenReturn(Optional.empty());
+        User user1 = User.builder().email("test@example.com").password("123").build();
+        when(loginUserService.getUserByEmail(any())).thenReturn(user1); // 무조건 유저 객체 반환
 
-        User userEmail = User.builder().email("test@test").build();
-        // When: 특정 메서드를 호출 () -> 메서드 호출하면
-        // Then: 예외가 발생하는지 확인 NoSuchElementException이 나온다.
+
+//         When: 특정 메서드를 호출 () -> 메서드 호출하면
+//         Then: 예외가 발생하는지 확인 NoSuchElementException이 나온다.
         assertThrows(NoSuchElementException.class, () ->
                 loginService.checkLoginForm(loginForm)
 

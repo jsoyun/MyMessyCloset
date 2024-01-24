@@ -35,12 +35,11 @@ public class LoginUserDataServiceTest {
         when(userMapper.getByEmail(userEmail)).thenReturn(user); //조회해서 값이 있다고 가정했을 때
 
         //when
-        Optional<User> result = loginUserService.getUserByEmail(user);
+        User result = loginUserService.getUserByEmail(user);
 
         //Then
-        assertThat(result.isPresent()); //값이 있다고 나온다.
-        assertEquals(userEmail, result.get().getEmail());
-        assertEquals(password, result.get().getPassword());
+        assertEquals(userEmail, result.getEmail());
+        assertEquals(password, result.getPassword());
 
         //userMapper 목 객체에 대해 getByEmail메서드가 정확히 1번 호출되었는지 검증
         verify(userMapper, times(1)).getByEmail(userEmail);

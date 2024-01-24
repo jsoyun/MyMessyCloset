@@ -5,6 +5,7 @@ import com.favorite.project.User.mapper.UserMapper;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.util.NoSuchElementException;
 import java.util.Optional;
 
 @Service
@@ -12,8 +13,8 @@ import java.util.Optional;
 public class LoginUserService {
     private final UserMapper userMapper;
 
-    public Optional<User> getUserByEmail(User user) {
+    public User getUserByEmail(User user) {
 
-        return Optional.ofNullable(userMapper.getByEmail(user.getEmail()));
+        return Optional.ofNullable(userMapper.getByEmail(user.getEmail())).orElseThrow(() -> new NoSuchElementException("해당하는 이메일이 없습니다."));
     }
 }

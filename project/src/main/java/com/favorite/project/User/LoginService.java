@@ -15,20 +15,22 @@ import java.util.Optional;
 @Service
 @RequiredArgsConstructor
 public class LoginService {
-    
+
     private final LoginUserService loginUserService;
 
     public LoginResponseDTO checkLoginForm(LoginRequestDTO loginRequestDTO) {
         String email = loginRequestDTO.getEmail();
         User userEmail = User.builder().email(email).build();
         String password = loginRequestDTO.getPassword();
+        
+        User userByEmail = loginUserService.getUserByEmail(userEmail);
+        boolean equals = userByEmail.getPassword().equals(password);
+        if (equals) {
+            return LoginResponseDTO.builder().id(userByEmail.getUserId()).name(userByEmail.getName()).email(userByEmail.getEmail()).build();
 
-        //TODO: 이메일 조회 - 성공, 비밀번호 - 실패 : 실패 요인 담기
-        Optional<User> userByEmail = loginUserService.getUserByEmail(userEmail);
-        User user = userByEmail.filter(m -> m.getPassword().equals(password)).orElseThrow(() -> new NoSuchElementException("User not found"));
-        LoginResponseDTO loginResponseDTO = LoginResponseDTO.builder().id(user.getUserId()).name(user.getName()).email(user.getEmail()).build();
-
-        return loginResponseDTO;
+        } else {
+            throw new NoSuchElementException("비밀번호가 일치하지 않습니다.");
+        }
 
 
     }
