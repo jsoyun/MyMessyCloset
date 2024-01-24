@@ -23,7 +23,7 @@ public class LoginController {
     private final LoginService loginService;
 
     @PostMapping
-    public ResponseEntity<Object> login(@RequestBody @Valid LoginRequestDTO loginRequestDTO) {
+    public ResponseEntity<LoginResponseDTO> login(@RequestBody @Valid LoginRequestDTO loginRequestDTO) {
 
         LoginResponseDTO loginResponseDTO = loginService.checkLoginForm(loginRequestDTO);
         return ResponseEntity.ok(loginResponseDTO);
