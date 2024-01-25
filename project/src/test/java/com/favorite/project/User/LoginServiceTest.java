@@ -59,7 +59,7 @@ class LoginServiceTest {
     }
 
     @Test
-    @DisplayName("loginUserService.getUserByEmail값이 없을 때 checkLoginForm 실패")
+    @DisplayName("이메일에 해당하는 유저는 있지만 비밀번호가 일치하지 않는다")
     void uncheckLoginFormTest() {
 
         //given
