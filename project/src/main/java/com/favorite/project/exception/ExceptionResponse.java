@@ -8,9 +8,9 @@ import java.util.List;
 
 @Builder
 @Getter
-public class ErrorResponse {
+public class ExceptionResponse {
     private HttpStatus status;
-    private List<String> errors;
+    private List<String> exceptions;
     private String message;
 
 
