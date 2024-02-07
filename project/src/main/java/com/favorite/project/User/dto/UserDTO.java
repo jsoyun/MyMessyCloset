@@ -1,5 +1,6 @@
 package com.favorite.project.User.dto;
 
+import com.favorite.project.User.domain.User;
 import lombok.Builder;
 import lombok.Getter;
 
@@ -9,8 +10,13 @@ public class UserDTO {
     private String name;
     private String email;
     private String password;
-    //user 로그인, 로그아웃 상태 - 이런 세션은 어떻게 관리하지..?
-    private String state;
+
+
+    public UserDTO toUserDTO(User user) {
+        return UserDTO.builder().name(user.getName())
+                .email(user.getEmail())
+                .password(user.getPassword()).build();
+    }
 
 
 }
