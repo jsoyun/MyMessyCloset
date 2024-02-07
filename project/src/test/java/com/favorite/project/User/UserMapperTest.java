@@ -32,8 +32,8 @@ public class UserMapperTest {
     public void GetAllUsersTest() {
         //given
         List<User> userList = new ArrayList<>();
-        User mockTest = User.builder().userId(1L).email("김생선").password("1234").build();
-        User mockTest2 = User.builder().userId(2L).email("이선생").password("4321").build();
+        User mockTest = User.builder().email("김생선").password("1234").build();
+        User mockTest2 = User.builder().email("이선생").password("4321").build();
         userList.add(mockTest);
         userList.add(mockTest2);
         when(userMapper.getAllUsers()).thenReturn(userList);
@@ -48,7 +48,6 @@ public class UserMapperTest {
         //log
         userList1.stream().peek(user -> {
 
-            System.out.println("user.getUserId() = " + user.getUserId());
             System.out.println("user.getEmail() = " + user.getEmail());
             System.out.println("user.getPassword() = " + user.getPassword());
         }).forEach(user -> {
@@ -81,19 +80,19 @@ public class UserMapperTest {
     public void InsertUserTest() {
         //given
         User mocktest = User.builder().email("user1").password("1234").build();
-        when(userMapper.insert(mocktest)).thenReturn(true);
+        when(userMapper.insert(mocktest)).thenReturn(mocktest);
         //when
-        boolean result = userMapper.insert(mocktest);
+        User insert = userMapper.insert(mocktest);
         //then
         verify(userMapper).insert(mocktest);
-        Assertions.assertThat(result);
+        Assertions.assertThat(insert);
 
     }
 
     @Test
     public void GetByIdTest() {
         //given
-        User mocktest = User.builder().userId(1L).email("user1").password("1234").build();
+        User mocktest = User.builder().email("user1").password("1234").build();
         when(userMapper.getById(1L)).thenReturn(mocktest);
         //when
         User UserbyId = userMapper.getById(1L);
@@ -102,7 +101,7 @@ public class UserMapperTest {
         Assertions.assertThat(mocktest.getEmail().equals(UserbyId.getEmail()));
         Assertions.assertThat(UserbyId);
 
-        log.info("user ={},{},{}", UserbyId.getUserId(), UserbyId.getEmail(), UserbyId.getPassword());
+        log.info("user ={},{},{}", UserbyId.getEmail(), UserbyId.getPassword());
 
     }
 
