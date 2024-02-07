@@ -18,15 +18,16 @@ public class LoginService {
 
     private final LoginUserService loginUserService;
 
+
     public LoginResponseDTO checkLoginForm(LoginRequestDTO loginRequestDTO) {
         String email = loginRequestDTO.getEmail();
         User userEmail = User.builder().email(email).build();
         String password = loginRequestDTO.getPassword();
-        
+
         User userByEmail = loginUserService.getUserByEmail(userEmail);
         boolean equals = userByEmail.getPassword().equals(password);
         if (equals) {
-            return LoginResponseDTO.builder().id(userByEmail.getUserId()).name(userByEmail.getName()).email(userByEmail.getEmail()).build();
+            return LoginResponseDTO.builder().uuid(userByEmail.getUuid()).name(userByEmail.getName()).email(userByEmail.getEmail()).build();
 
         } else {
             throw new NoSuchElementException("비밀번호가 일치하지 않습니다.");
