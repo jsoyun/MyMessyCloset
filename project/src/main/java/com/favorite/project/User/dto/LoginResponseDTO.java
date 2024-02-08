@@ -3,7 +3,7 @@ package com.favorite.project.User.dto;
 import lombok.Builder;
 import lombok.Getter;
 
-import javax.validation.constraints.NotBlank;
+import java.util.UUID;
 
 @Builder
 @Getter

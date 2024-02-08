@@ -10,6 +10,10 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 import java.util.Optional;
 
+/**
+ * 유저 데이터 관리 (조회)
+ */
+
 @Service
 @RequiredArgsConstructor
 public class UserService {

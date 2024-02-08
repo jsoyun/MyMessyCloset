@@ -18,7 +18,7 @@ public interface UserMapper {
     User getByEmail(@Param("email") String email);
 
     @Insert("INSERT INTO Users (email, name, password) VALUES(#{user.email} , #{user.name}, #{user.password})")
-    boolean insert(@Param("user") User users);
+    User insert(@Param("user") User users);
 
 
     //xml 사용하고 싶은데 안됨.
