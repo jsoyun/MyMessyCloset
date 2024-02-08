@@ -8,7 +8,7 @@ import java.util.UUID;
 @Builder
 @Getter
 public class LoginResponseDTO {
-    private UUID uuid;
+    private Long id;
     private String name;
     private String email;
 

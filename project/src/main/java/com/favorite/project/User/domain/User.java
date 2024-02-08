@@ -9,23 +9,24 @@ import java.util.UUID;
 @Getter
 @Builder
 public class User {
-    private UUID uuid;
+    //    private UUID uuid;
+    private Long id;
     private String email;
     private String name;
     private String password;
 
     public User toUser(UserDTO userDTO) {
-        return User.builder().uuid(makeUUID()).email(userDTO.getEmail())
+        return User.builder().email(userDTO.getEmail())
                 .name(userDTO.getName())
                 .password(userDTO.getPassword()).build();
 
     }
-
-    private UUID makeUUID() {
-        UUID newUUID = UUID.randomUUID();
-        return newUUID;
-
-    }
+//
+//    private UUID makeUUID() {
+//        UUID newUUID = UUID.randomUUID();
+//        return newUUID;
+//
+//    }
 
 
 }
