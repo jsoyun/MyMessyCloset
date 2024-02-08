@@ -15,11 +15,9 @@ public class User {
     private String password;
 
     public User toUser(UserDTO userDTO) {
-        User user = User.builder().uuid(makeUUID()).email(userDTO.getEmail())
+        return User.builder().uuid(makeUUID()).email(userDTO.getEmail())
                 .name(userDTO.getName())
                 .password(userDTO.getPassword()).build();
-
-        return user;
 
     }
 

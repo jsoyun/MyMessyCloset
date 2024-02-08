@@ -11,6 +11,11 @@ import org.springframework.stereotype.Service;
 import java.util.NoSuchElementException;
 import java.util.Optional;
 
+/**
+ * 로그인:
+ * 해당하는 이메일의 비밀번호가 일치한지  확인
+ * 일치하면 해당하는 유저값을 컨틀롤러에 응답
+ */
 @Slf4j
 @Service
 @RequiredArgsConstructor

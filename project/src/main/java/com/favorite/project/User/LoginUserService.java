@@ -8,6 +8,9 @@ import org.springframework.stereotype.Service;
 import java.util.NoSuchElementException;
 import java.util.Optional;
 
+/**
+ * 같은 email을 가진 User있는지 조회
+ */
 @Service
 @RequiredArgsConstructor
 public class LoginUserService {
