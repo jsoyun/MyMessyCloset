@@ -17,7 +17,7 @@ public class UserCloset {
     private String name;
     private String color;
     private String notes;
-    private int user_id;
+    private int userId;
 
 
 }
