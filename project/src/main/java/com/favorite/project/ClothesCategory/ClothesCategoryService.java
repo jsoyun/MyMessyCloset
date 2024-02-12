@@ -18,5 +18,12 @@ public class ClothesCategoryService {
         return true;
     }
 
+    public int getClothesCategoryId(ClothesCategoryEnumType clothesCategoryEnumType) {
+
+        int idByCategoryName = categoryMapper.selectCategoryIdByCategoryName(clothesCategoryEnumType.name());
+        return idByCategoryName;
+
+    }
+
 
 }
