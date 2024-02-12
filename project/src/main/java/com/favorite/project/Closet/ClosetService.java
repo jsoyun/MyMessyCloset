@@ -3,7 +3,7 @@ package com.favorite.project.Closet;
 import com.favorite.project.Closet.Mapper.ClosetMapper;
 
 import com.favorite.project.Closet.domain.UserCloset;
-import com.favorite.project.Closet.dto.ClosetAddDto;
+import com.favorite.project.Closet.dto.UserClosetAddDto;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -21,7 +21,7 @@ public class ClosetService {
         return closetMapper.getAllUserClosets();
     }
 
-    public boolean insertUserCloset(ClosetAddDto closetAddDto) throws SQLException {
+    public boolean insertUserCloset(UserClosetAddDto closetAddDto) throws SQLException {
 
         UserCloset closet = closetAddDto.toUserClosetEntity();
         closetMapper.insertUserCloset(closet);
