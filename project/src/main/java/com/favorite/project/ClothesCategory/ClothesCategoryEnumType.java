@@ -16,9 +16,5 @@ public enum ClothesCategoryEnumType {
         this.title = title;
     }
 
-    public String getClothesCategoryTypeTitle() {
-        return title;
-    }
-    
 
 }

@@ -2,7 +2,7 @@ package com.favorite.project.Closet.presentation;
 
 import com.favorite.project.Closet.ClosetService;
 import com.favorite.project.Closet.domain.UserCloset;
-import com.favorite.project.Closet.dto.ClosetAddDto;
+import com.favorite.project.Closet.dto.UserClosetAddDto;
 import com.favorite.project.User.exceptions.SQLExceptionHandler;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -36,7 +36,7 @@ public class ClosetRestController {
 
 
     @PostMapping("/closet")
-    public ResponseEntity<Object> addCloset(@RequestBody ClosetAddDto closetAddDto) {
+    public ResponseEntity<Object> addCloset(@RequestBody UserClosetAddDto closetAddDto) {
         try {
             closetService.insertUserCloset(closetAddDto);
             Map<String, String> successResponse = new HashMap<>();
