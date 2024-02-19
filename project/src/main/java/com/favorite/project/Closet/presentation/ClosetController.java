@@ -1,15 +1,16 @@
 package com.favorite.project.Closet.presentation;
 
 import com.favorite.project.Closet.ClosetService;
-import com.favorite.project.Closet.domain.UserCloset;
+import com.favorite.project.User.domain.User;
+import com.favorite.project.Validator.SessionConst;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.CookieValue;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
 
-import java.util.List;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 @Controller
 @RequiredArgsConstructor
@@ -17,20 +18,21 @@ public class ClosetController {
 
     private final ClosetService closetService;
 
-    //TODO: 로그인 되어 있어야하만 closet 추가할 수 있음
-    //TODO: 세션 유무로 파악
-    //TODO: userId를 넘겨줘야함!
-    @GetMapping("/closet/{user_id}")
-    public String getClosetView(@PathVariable @CookieValue(name = "user_id", required = false) Long user_id, Model model) {
+    /**
+     * 로그인 되어 있어야하만 closet 추가할 수 있음
+     * 세션 유무로 파악
+     */
 
-        if (user_id == null) {
+    @GetMapping("/closet")
+    public String getClosetView(HttpServletRequest request, HttpServletResponse response, Model model) {
+        HttpSession session = request.getSession(false);
+
+        if (session == null) {
             return "redirect:/";
-
         }
-
-        model.addAttribute("User", user_id);
-
-
+        User valueBySessionAttribute = (User) session.getAttribute(SessionConst.USER_SESSION_ID);
+        Long id = valueBySessionAttribute.getId();
+        model.addAttribute("userId", id);
         return "/closet";
     }
 

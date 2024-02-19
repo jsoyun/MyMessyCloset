@@ -19,7 +19,7 @@
     <textarea id="notes" name="notes" rows="4" cols="50"></textarea><br>
 
     <label for="user_id">user_id:</label>
-    <input type="number" id="user_id" name="user_id" th:value="${user_id}"><br>
+    <input type="number" id="userId" name="userId" th:value="${userId}"><br>
     <button type="button" onclick="submitForm()">제출</button>
 </form>
 
@@ -28,17 +28,18 @@
 
         var name = document.getElementById("name").value;
         var color = document.getElementById("color").value;
-        var user_id = document.getElementById("user_id").value;
+        var userId = document.getElementById("userId").value;
         var notes = document.getElementById("notes").value;
 
 
         var url = '/closet'
 
         var data = {
-            name   : name,
-            color  : color,
-            user_id: user_id,
-            notes  : notes
+            name  : name,
+            color : color,
+            notes : notes,
+            userId: userId
+
 
         };
 
