@@ -16,7 +16,7 @@ public interface ClosetMapper {
 //    List<UserCloset> getAllUserClosets();
 
 
-    @Insert("INSERT INTO userCloset (name, color, notes,user_id) VALUES (#{UserCloset.name},#{UserCloset.color},#{UserCloset.notes},#{UserCloset.user_id})")
+    @Insert("INSERT INTO userCloset (name, color, notes,user_id) VALUES (#{UserCloset.name},#{UserCloset.color},#{UserCloset.notes},#{UserCloset.userId})")
     boolean insertUserCloset(@Param("UserCloset") UserCloset closet);
 
     List<UserCloset> getAllUserClosets();
