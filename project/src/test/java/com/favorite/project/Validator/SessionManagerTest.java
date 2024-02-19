@@ -6,27 +6,46 @@ import org.junit.jupiter.api.Test;
 import org.springframework.mock.web.MockHttpServletRequest;
 import org.springframework.mock.web.MockHttpServletResponse;
 
+import javax.servlet.http.Cookie;
+import javax.servlet.http.HttpSession;
+
 public class SessionManagerTest {
-    SessionManager sessionManager = new SessionManager();
 
     @Test
     void sessionTest() {
-        //세션 생성
-        MockHttpServletResponse response = new MockHttpServletResponse();
-        User user = User.builder().build();
-        sessionManager.createSession(user, response);
 
-        //요청에 응답쿠키 저장
         MockHttpServletRequest request = new MockHttpServletRequest();
-        request.setCookies(response.getCookies());
+        MockHttpServletResponse response = new MockHttpServletResponse();
+
+        User user = User.builder()
+                .id(1L)
+                .email("so")
+                .name("이소윤")
+                .password("123").build();
+
+        String sesstionId = "userSessionId";
+
+        //세션 생성
+        HttpSession session = request.getSession();
+        session.setAttribute(sesstionId, user);
+        //서버가 응답으로 쿠키 추가
+        //TODO:Check: 실제 로직에서는 자동으로 생기던데? 맞나? JSESSIONID
+        response.addCookie(new Cookie("JSESSIONID", sesstionId));
+
+        //요청
+        HttpSession getSession = request.getSession(false);
+        User userBySesstionAttribute = (User) getSession.getAttribute(sesstionId);
+        Long id = userBySesstionAttribute.getId();
+        String name = userBySesstionAttribute.getName();
 
         //세션 조회
-        Object result = sessionManager.getSession(request);
-        Assertions.assertThat(result).isEqualTo(user);
+        Assertions.assertThat(id).isEqualTo(1L);
+        Assertions.assertThat(name).isEqualTo("이소윤");
+
         //세션 만료
-        sessionManager.expire(request, response);
-        Object expired = sessionManager.getSession(request);
-        Assertions.assertThat(expired).isNull();
+        getSession.invalidate();
+        Assertions.assertThat(request.getSession(false)).isNull();
+
     }
 
 
