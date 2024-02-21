@@ -1,8 +1,7 @@
-package com.favorite.project.Closet;
+package com.favorite.project.UserCloset;
 
-import com.favorite.project.Closet.Mapper.ClosetMapper;
-import com.favorite.project.Closet.domain.UserCloset;
-import lombok.RequiredArgsConstructor;
+import com.favorite.project.UserCloset.Mapper.ClosetMapper;
+import com.favorite.project.UserCloset.domain.UserCloset;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;

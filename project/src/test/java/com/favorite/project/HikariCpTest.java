@@ -3,9 +3,8 @@ package com.favorite.project;
 
 //import com.favorite.project.Closet.dao.ClosetDao;
 
-import com.favorite.project.Closet.domain.UserCloset;
+import com.favorite.project.UserCloset.domain.UserCloset;
 import org.junit.jupiter.api.Test;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
 import java.sql.SQLException;

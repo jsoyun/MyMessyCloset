@@ -1,6 +1,6 @@
-package com.favorite.project.Closet.presentation;
+package com.favorite.project.UserCloset.presentation;
 
-import com.favorite.project.Closet.ClosetService;
+import com.favorite.project.UserCloset.ClosetService;
 import com.favorite.project.User.domain.User;
 import com.favorite.project.Validator.SessionConst;
 import lombok.RequiredArgsConstructor;
