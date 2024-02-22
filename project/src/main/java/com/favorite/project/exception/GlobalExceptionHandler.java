@@ -74,5 +74,24 @@ public class GlobalExceptionHandler {
 
     }
 
+    @ExceptionHandler(IllegalArgumentException.class)
+    @ResponseStatus(value = HttpStatus.NOT_FOUND)
+    public ResponseEntity<ExceptionResponse> IllegalArgumentException(IllegalArgumentException exception) {
+        List<String> Messages = new ArrayList<>();
+        Messages.add(exception.getMessage());
+
+        ExceptionResponse elementNotFound = ExceptionResponse.builder().message("유효하지 않은 값").exceptions(Messages).status(HttpStatus.BAD_REQUEST).build();
+        return new ResponseEntity<>(elementNotFound, elementNotFound.getStatus());
+
+    }
+
+    @ExceptionHandler(NullPointerException.class)
+    public ResponseEntity<ExceptionResponse> handleNullPointerException(NullPointerException exception) {
+        List<String> Messages = new ArrayList<>();
+        Messages.add(exception.getMessage());
+        ExceptionResponse exceptionResponse = ExceptionResponse.builder().message("Null pointer exception 발생").exceptions(Messages).status(HttpStatus.BAD_REQUEST).build();
+        return new ResponseEntity<>(exceptionResponse, exceptionResponse.getStatus());
+    }
+
 
 }
