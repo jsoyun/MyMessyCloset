@@ -1,6 +1,5 @@
 package com.favorite.project.Clothes.dto;
 
-import com.favorite.project.Closet.domain.UserCloset;
 import com.favorite.project.Clothes.domain.Clothes;
 import com.favorite.project.ClothesCategory.ClothesCategoryEnumType;
 import com.favorite.project.Clothes.SeasonType;
