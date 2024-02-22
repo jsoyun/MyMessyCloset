@@ -1,4 +1,4 @@
-package com.favorite.project.Closet.domain;
+package com.favorite.project.UserCloset.domain;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;

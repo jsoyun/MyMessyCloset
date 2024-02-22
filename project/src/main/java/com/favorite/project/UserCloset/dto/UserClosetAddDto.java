@@ -1,6 +1,6 @@
-package com.favorite.project.Closet.dto;
+package com.favorite.project.UserCloset.dto;
 
-import com.favorite.project.Closet.domain.UserCloset;
+import com.favorite.project.UserCloset.domain.UserCloset;
 import lombok.Builder;
 import lombok.Getter;
 

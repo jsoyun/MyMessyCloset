@@ -20,6 +20,7 @@ public class Clothes {
 
     @Setter
     private int categoryId;
+    //TODO: 세터로 박지 말고 다른 방법 찾기
     @Setter
     private int userClosetId;
 

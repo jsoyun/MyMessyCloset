@@ -1,7 +1,6 @@
-package com.favorite.project.Closet.Mapper;
+package com.favorite.project.UserCloset.Mapper;
 
-import com.favorite.project.Closet.domain.UserCloset;
-import com.favorite.project.User.domain.User;
+import com.favorite.project.UserCloset.domain.UserCloset;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
@@ -20,5 +19,11 @@ public interface ClosetMapper {
     boolean insertUserCloset(@Param("UserCloset") UserCloset closet);
 
     List<UserCloset> getAllUserClosets();
+
+    @Select("SELECT EXISTS (SELECT 1 FROM UserCloset WHERE id = #{id})")
+    boolean checkUserClosetById(@Param("id") int id);
+
+    @Select("SELECT EXISTS (SELECT 1 FROM UserCloset WHERE user_id = #{id})")
+    boolean checkUserById(@Param("id") Long id);
 
 }

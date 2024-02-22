@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.favorite.project.Closet.Mapper.ClosetMapper">
-    <!--    <select id="getAllUserClosets" resultType="com.favorite.project.Closet.domain.UserCloset">-->
+<mapper namespace="com.favorite.project.UserCloset.Mapper.ClosetMapper">
+    <!--    <select id="getAllUserClosets" resultType="com.favorite.project.UserCloset.domain.UserCloset">-->
     <!--        SELECT *-->
     <!--        FROM UserCloset-->
     <!--    </select>-->
-    <resultMap id="userResultMap" type="com.favorite.project.Closet.domain.UserCloset">
+    <resultMap id="userResultMap" type="com.favorite.project.UserCloset.domain.UserCloset">
         <result column="user_id" property="user_id"/>
         <result column="name" property="name"/>
     </resultMap>

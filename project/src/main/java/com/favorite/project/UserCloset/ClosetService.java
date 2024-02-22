@@ -1,9 +1,9 @@
-package com.favorite.project.Closet;
+package com.favorite.project.UserCloset;
 
-import com.favorite.project.Closet.Mapper.ClosetMapper;
+import com.favorite.project.UserCloset.Mapper.ClosetMapper;
 
-import com.favorite.project.Closet.domain.UserCloset;
-import com.favorite.project.Closet.dto.UserClosetAddDto;
+import com.favorite.project.UserCloset.domain.UserCloset;
+import com.favorite.project.UserCloset.dto.UserClosetAddDto;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 

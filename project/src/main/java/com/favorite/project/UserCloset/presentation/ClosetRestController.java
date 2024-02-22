@@ -1,8 +1,8 @@
-package com.favorite.project.Closet.presentation;
+package com.favorite.project.UserCloset.presentation;
 
-import com.favorite.project.Closet.ClosetService;
-import com.favorite.project.Closet.domain.UserCloset;
-import com.favorite.project.Closet.dto.UserClosetAddDto;
+import com.favorite.project.UserCloset.ClosetService;
+import com.favorite.project.UserCloset.domain.UserCloset;
+import com.favorite.project.UserCloset.dto.UserClosetAddDto;
 import com.favorite.project.User.exceptions.SQLExceptionHandler;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
