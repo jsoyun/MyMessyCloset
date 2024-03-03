@@ -37,11 +37,11 @@ public class BoardMapperTest {
                 .build();
 
         //given
-        given(boardMapper.insertBoard(board)).willReturn(true);
+        given(boardMapper.insertBoard(board)).willReturn(board);
         //when
-        boolean result = boardMapper.insertBoard(board);
+        Board result = boardMapper.insertBoard(board);
         //then
-        Assertions.assertThat(result).isEqualTo(true);
+        Assertions.assertThat(result).isEqualTo(board);
 
 
     }
