@@ -1,10 +1,12 @@
 package com.favorite.project.Board.domain;
 
 import lombok.Builder;
+import lombok.Getter;
 
 import java.time.LocalDateTime;
 
 @Builder
+@Getter
 public class Board {
     private LocalDateTime createdAt;
     private BoardType boardType;
