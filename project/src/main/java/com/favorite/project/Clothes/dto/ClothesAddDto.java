@@ -25,6 +25,7 @@ public class ClothesAddDto {
                 .price(clothesAddDto.price)
                 .imgUrl(clothesAddDto.imgUrl)
                 .purchasedDate(clothesAddDto.purchasedDate)
+                .categoryId(clothesCategoryType.getClothesCategoryId())
                 .userClosetId(clothesAddDto.userClosetId)
                 .build();
     }
