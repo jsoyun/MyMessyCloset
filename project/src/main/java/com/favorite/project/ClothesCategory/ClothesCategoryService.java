@@ -20,8 +20,7 @@ public class ClothesCategoryService {
 
     public int getClothesCategoryId(ClothesCategoryEnumType clothesCategoryEnumType) {
 
-        int idByCategoryName = categoryMapper.selectCategoryIdByCategoryName(clothesCategoryEnumType.name());
-        return idByCategoryName;
+        return categoryMapper.selectCategoryIdByCategoryName(clothesCategoryEnumType.name());
 
     }
 
