@@ -1,11 +1,10 @@
 package com.favorite.project.Clothes.domain;
 
-import com.favorite.project.Clothes.dto.ClothesResponseDto;
+import com.favorite.project.Clothes.dto.ClothesInsertionResponseDto;
 import com.favorite.project.ClothesCategory.ClothesCategoryEnumType;
 import com.favorite.project.Clothes.SeasonType;
 import lombok.Builder;
 import lombok.Getter;
-import lombok.Setter;
 
 import java.time.LocalDate;
 
@@ -17,11 +16,7 @@ public class Clothes {
     private int price;
     private String imgUrl;
     private LocalDate purchasedDate;
-
-    @Setter
     private int categoryId;
-    //TODO: 세터로 박지 말고 다른 방법 찾기
-    @Setter
     private int userClosetId;
 
 
@@ -30,14 +25,13 @@ public class Clothes {
 
     }
 
-
-    public ClothesResponseDto toClothesResponseDto(Clothes clothes) {
-        return ClothesResponseDto.builder().clothesCategoryType(clothes.clothesCategoryEnumType)
+    public ClothesInsertionResponseDto toClothesResponseDto(Clothes clothes) {
+        return ClothesInsertionResponseDto.builder()
+                .clothesCategoryType(clothes.clothesCategoryEnumType)
                 .seasonType(clothes.seasonType)
                 .price(clothes.price)
                 .imgUrl(clothes.imgUrl)
                 .purchasedDate(clothes.purchasedDate)
-                .categoryId(clothes.categoryId)
                 .userClosetId(clothes.userClosetId)
                 .build();
     }
