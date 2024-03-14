@@ -5,15 +5,18 @@ import com.favorite.project.ClothesCategory.domain.ClothesCategory;
 import lombok.Builder;
 import lombok.Getter;
 
+import javax.validation.constraints.NotNull;
+
 @Builder
 @Getter
 public class CategoryAddDto {
+    @NotNull
     private ClothesCategoryEnumType clothesCategoryEnumType;
 
     public ClothesCategory toClothesCategory(CategoryAddDto categoryAddDto) {
 
-        ClothesCategory clothesCategory = ClothesCategory.builder().clothesCategoryEnumType(categoryAddDto.getClothesCategoryEnumType()).build();
-
-        return clothesCategory;
+        return ClothesCategory.builder()
+                .clothesCategoryEnumType(categoryAddDto.getClothesCategoryEnumType())
+                .build();
     }
 }

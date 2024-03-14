@@ -2,6 +2,7 @@ package com.favorite.project.Clothes;
 
 import com.favorite.project.Clothes.Mapper.ClothesMapper;
 import com.favorite.project.Clothes.dto.ClothesAddDto;
+import com.favorite.project.Clothes.dto.ClothesInsertionResponseDto;
 import com.favorite.project.Clothes.dto.ClothesResponseDto;
 import com.favorite.project.ClothesCategory.ClothesCategoryEnumType;
 import com.favorite.project.ClothesCategory.ClothesCategoryService;
@@ -59,10 +60,10 @@ public class ClothesServiceTest {
         given(closetValidator.checkUserCloset(1)).willReturn(true);
         given(clothesMapper.insertClothes(any())).willReturn(true);
         //when
-        ClothesResponseDto clothesResponseDto = clothesService.addClothes(clothesAddDto);
+        ClothesInsertionResponseDto clothesInsertionResponseDto = clothesService.addClothes(clothesAddDto);
         //then
         verify(clothesMapper, times(1)).insertClothes(any());
-        Assertions.assertThat(clothesResponseDto.getClothesCategoryType()).isEqualTo(tops);
+        Assertions.assertThat(clothesInsertionResponseDto.getClothesCategoryType()).isEqualTo(tops);
 
 
     }

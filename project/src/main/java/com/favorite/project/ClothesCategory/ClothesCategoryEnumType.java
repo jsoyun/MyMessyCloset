@@ -1,20 +1,31 @@
 package com.favorite.project.ClothesCategory;
 
-import com.favorite.project.ClothesCategory.domain.ClothesCategory;
 import lombok.Getter;
 
 @Getter
 public enum ClothesCategoryEnumType {
-    TOPS("상의"),
-    PANTS("바지"),
-    OUTERWEAR("외투"),
-    ACTIVE("기능성옷");
+    TOPS(1, "상의"),
+    PANTS(3, "하의"),
+    OUTERWEAR(4, "겉옷"),
+    ACTIVE(9, "활동복");
 
-    private String title;
+    private final int clothesCategoryId;
+    private final String clothesCategoryName;
 
-    ClothesCategoryEnumType(String title) {
-        this.title = title;
+
+    ClothesCategoryEnumType(int clothesCategoryId, String clothesCategoryName) {
+        this.clothesCategoryId = clothesCategoryId;
+        this.clothesCategoryName = clothesCategoryName;
     }
 
+    public static String getClothesCategoryName(int clothesCategoryId) {
+        for (ClothesCategoryEnumType type : values()) {
+            if (type.clothesCategoryId == clothesCategoryId) {
+                return type.clothesCategoryName;
+            }
+
+        }
+        return null;
+    }
 
 }
