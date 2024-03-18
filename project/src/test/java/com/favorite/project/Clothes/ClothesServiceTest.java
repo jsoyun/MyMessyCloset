@@ -3,7 +3,6 @@ package com.favorite.project.Clothes;
 import com.favorite.project.Clothes.Mapper.ClothesMapper;
 import com.favorite.project.Clothes.dto.ClothesAddDto;
 import com.favorite.project.Clothes.dto.ClothesInsertionResponseDto;
-import com.favorite.project.Clothes.dto.ClothesResponseDto;
 import com.favorite.project.ClothesCategory.ClothesCategoryEnumType;
 import com.favorite.project.ClothesCategory.ClothesCategoryService;
 import com.favorite.project.UserCloset.UserClosetValidator;
