@@ -39,7 +39,7 @@ public class ClothesController {
 
     @PostMapping("/userClosetId")
     public ResponseEntity<List<UserClosetResponseDto>> getClothesByCloset(@RequestBody UserClosetIdRequestDto userClosetId) {
-        List<UserClosetResponseDto> clothesResponseDtoList = clothesService.getAllClothes(userClosetId.getUserClosetId());
+        List<UserClosetResponseDto> clothesResponseDtoList = clothesService.getAllClothesByUserClosetId(userClosetId.getUserClosetId());
         return new ResponseEntity<>(clothesResponseDtoList, HttpStatus.OK);
 
     }

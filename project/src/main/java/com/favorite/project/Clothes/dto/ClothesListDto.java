@@ -17,5 +17,4 @@ public class ClothesListDto {
     private LocalDate purchasedDate;
     private SeasonType season;
 
-
 }

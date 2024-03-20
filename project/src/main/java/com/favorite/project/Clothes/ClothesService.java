@@ -37,9 +37,10 @@ public class ClothesService {
 
         return closetValidator.checkUserCloset(clothes.getUserClosetId());
     }
+    
 
-    public List<UserClosetResponseDto> getAllClothes(int userClosetId) {
-        List<ClothesListDto> clothesListDtos = clothesMapper.selectAllClothes(userClosetId);
+    public List<UserClosetResponseDto> getAllClothesByUserClosetId(int userClosetId) {
+        List<ClothesListDto> clothesListDtos = clothesMapper.selectAllClothesById(userClosetId);
         List<UserClosetResponseDto> userClosetResponseDtoList = new ArrayList<>();
         for (ClothesListDto clothesListDto : clothesListDtos) {
             UserClosetResponseDto userClosetResponseDTO =
