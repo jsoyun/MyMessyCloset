@@ -17,12 +17,11 @@ public interface ClothesMapper {
             @Result(property = "purchasedDate", column = "purchased_date"),
             @Result(property = "userClosetId", column = "userCloset_id")
     })
-    @Select("SELECT id,userCloset_id,clothes_category_id, price,img, purchased_date,season  FROM Clothes WHERE userCloset_id = #{UserClosetId}")
-    List<ClothesListDto> selectAllClothesById(@Param("UserClosetId") int userClosetId);
+    @Select("SELECT id,userCloset_id,clothes_category_id, price,img, purchased_date,season  FROM Clothes WHERE userCloset_id = #{UserClosetId}  LIMIT #{pageSize} OFFSET #{page} ")
+    List<ClothesListDto> selectAllClothesById(@Param("UserClosetId") int userClosetId, @Param("page") int page, @Param("pageSize") int pageSize);
 
 
     @Select("SELECT id,userCloset_id,clothes_category_id, price,img, purchased_date,season FROM Clothes WHERE season = #{seasonType} ")
     List<ClothesListDto> selectClothesBySeason(@Param("seasonType") SeasonType seasonType);
-
 
 }
