@@ -38,8 +38,8 @@ public class ClothesController {
     }
 
     @PostMapping("/userClosetId")
-    public ResponseEntity<List<UserClosetResponseDto>> getClothesByCloset(@RequestBody UserClosetIdRequestDto userClosetId) {
-        List<UserClosetResponseDto> clothesResponseDtoList = clothesService.getAllClothesByUserClosetId(userClosetId.getUserClosetId());
+    public ResponseEntity<List<UserClosetResponseDto>> getClothesByCloset(@RequestBody UserClosetIdRequestDto userClosetId, @RequestParam("page") int page, @RequestParam("pageSize") int pageSize) {
+        List<UserClosetResponseDto> clothesResponseDtoList = clothesService.getAllClothesByUserClosetId(userClosetId.getUserClosetId(), page, pageSize);
         return new ResponseEntity<>(clothesResponseDtoList, HttpStatus.OK);
 
     }
