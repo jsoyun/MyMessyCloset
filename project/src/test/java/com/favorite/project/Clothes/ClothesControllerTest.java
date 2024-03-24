@@ -59,11 +59,11 @@ public class ClothesControllerTest {
 
 
         int userClosetId = 54;
-        int page = 1;
+        int page = 0;
         int pageSize = 2;
 
 
-        for (int i = page - 1; i < pageSize; i++) {
+        for (int i = page; i < pageSize; i++) {
             assertThat(ClothesList.get(i).getUserClosetId()).isEqualTo(userClosetId);
         }
         assertThat(ClothesList.size()).isEqualTo(pageSize);
