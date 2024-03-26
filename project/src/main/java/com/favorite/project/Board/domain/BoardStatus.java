@@ -4,9 +4,8 @@ import lombok.Getter;
 
 @Getter
 public enum BoardStatus {
-
-    AVAILABLE("이용가능"),
-    RESERVED("예약됨"),
+    AVAILABLE("예약가능"),
+    RESERVED("예약완료"),
     SOLD("판매완료"),
     RENTED("대여중");
 

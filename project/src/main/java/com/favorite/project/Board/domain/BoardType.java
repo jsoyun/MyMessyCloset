@@ -1,8 +1,11 @@
 package com.favorite.project.Board.domain;
 
+import lombok.Getter;
+
+@Getter
 public enum BoardType {
-    RENT("대여 게시판"),
-    SALE("판매 게시판");
+    RENT("대여"),
+    SALE("판매");
 
     private final String description;
 
