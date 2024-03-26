@@ -12,6 +12,7 @@ import java.time.LocalDateTime;
 @Getter
 public class BoardResponseDto {
     private LocalDateTime createdAt;
+    private int userId;
     private BoardType boardType;
     private int clothesId;
     private double price;

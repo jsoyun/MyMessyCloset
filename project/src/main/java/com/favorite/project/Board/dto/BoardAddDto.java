@@ -5,6 +5,7 @@ import com.favorite.project.Board.domain.BoardStatus;
 import com.favorite.project.Board.domain.BoardType;
 import lombok.Builder;
 import lombok.Getter;
+import lombok.Setter;
 
 import java.time.LocalDateTime;
 
@@ -21,8 +22,13 @@ public class BoardAddDto {
     private String location;
     private BoardStatus status;
 
+    @Setter
+    private Long userId;
+
     public Board toBoard(BoardAddDto boardAddDto) {
         return Board.builder().createdAt(boardAddDto.createdAt)
+                .boardType(boardAddDto.boardType)
+                .userId(boardAddDto.userId)
                 .clothesId(boardAddDto.clothesId)
                 .price(boardAddDto.price)
                 .rentalHours(boardAddDto.rentalHours)

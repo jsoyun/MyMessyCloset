@@ -1,6 +1,7 @@
 package com.favorite.project.Clothes.dto;
 
 import com.favorite.project.Clothes.SeasonType;
+import com.favorite.project.Clothes.domain.Clothes;
 import lombok.Builder;
 import lombok.Getter;
 
@@ -16,5 +17,6 @@ public class ClothesListDto {
     private String img;
     private LocalDate purchasedDate;
     private SeasonType season;
+    
 
 }

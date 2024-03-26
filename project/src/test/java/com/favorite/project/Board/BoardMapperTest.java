@@ -36,12 +36,13 @@ public class BoardMapperTest {
                 .status(BoardStatus.AVAILABLE)
                 .build();
 
-        //given
-        given(boardMapper.insertBoard(board)).willReturn(board);
-        //when
-        Board result = boardMapper.insertBoard(board);
-        //then
-        Assertions.assertThat(result).isEqualTo(board);
+//        given
+        given(boardMapper.insertBoard(board)).willReturn(1);
+
+//        when
+        boardMapper.insertBoard(board);
+//        then
+        Assertions.assertThat(boardMapper.insertBoard(board)).isEqualTo(1);
 
 
     }

@@ -8,6 +8,6 @@ import org.apache.ibatis.annotations.Param;
 @Mapper
 public interface BoardMapper {
 
-    @Insert("INSERT INTO Board (createdAt,boardType, clothesId, price, rentalHours, content, imageUrl, location,status) VALUES (#{board.createdAt},#{board.boardType}, #{board.clothesId}, #{board.price} , #{board.rentalHours},#{board.content}, #{board.imageUrl}, #{board.location}, #{board.status} )")
-    Board insertBoard(@Param("board") Board board);
+    @Insert("INSERT INTO Board (created_at,user_id,board_type, clothes_id, price, rental_Hours, content, image_url, location,status) VALUES (#{board.createdAt},#{board.userId}, #{board.boardType}, #{board.clothesId}, #{board.price} , #{board.rentalHours},#{board.content}, #{board.imageUrl}, #{board.location}, #{board.status} )")
+    int insertBoard(@Param("board") Board board);
 }
