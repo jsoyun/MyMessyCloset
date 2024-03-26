@@ -40,7 +40,7 @@ public class ClothesService {
 
 
     public List<UserClosetResponseDto> getAllClothesByUserClosetId(int userClosetId, int page, int pageSize) {
-        List<ClothesListDto> clothesListDtos = clothesMapper.selectAllClothesById(userClosetId, page, pageSize);
+        List<ClothesListDto> clothesListDtos = clothesMapper.selectAllClothesByUserClosetId(userClosetId, page, pageSize);
         List<UserClosetResponseDto> userClosetResponseDtoList = new ArrayList<>();
         for (ClothesListDto clothesListDto : clothesListDtos) {
             UserClosetResponseDto userClosetResponseDTO =
